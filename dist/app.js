@@ -35,6 +35,7 @@ app.listen(port, () => {
     //   console.log(data.firstName + " " + data.lastName);
     // });
     sns_sqs.processLogs("hello from backend", "socket::abc", "requestGUID:abc");
+    sns_sqs.LogError("Logged Error....");
     console.log(`server is listening: port number ${port}`);
 });
 //# sourceMappingURL=app.js.map

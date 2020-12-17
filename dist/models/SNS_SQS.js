@@ -9,6 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
+const log_1 = require("../log");
 const fs = require("fs");
 var AWS = require("aws-sdk");
 const path = require("path");
@@ -240,6 +241,41 @@ class SNS_SQS {
         catch (e) {
             return null;
         }
+    }
+    LogInfo(message) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let log = new log_1.Log();
+            log.setUserMessage(message);
+            log.setIssueTypeId(Issue_Type_ID.Information);
+            log.setIssueCategoryId(Issue_Category.Low);
+            return this.processLogs(log, null, null);
+            //here the log category is information
+            //log type is low
+            //call the processLogs with the prepared object
+        });
+    }
+    LogWarning(message) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let log = new log_1.Log();
+            log.setUserMessage(message);
+            log.setIssueTypeId(Issue_Type_ID.Warning);
+            log.setIssueCategoryId(Issue_Category.Low);
+            return this.processLogs(log, null, null);
+            //here the log category is warning
+            ///call the processLogs with the prepared object
+        });
+    }
+    LogError(message) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let log = new log_1.Log();
+            log.setUserMessage(message);
+            log.setIssueTypeId(Issue_Type_ID.Exception);
+            log.setIssueCategoryId(Issue_Category.Critical);
+            return this.processLogs(log, "socketId1", "requestGuid1");
+            //here the log category is Exeception
+            //log type is critical
+            //call the processLogs with the prepared object
+        });
     }
     processLogs(message, socketId, requestGUID) {
         return __awaiter(this, void 0, void 0, function* () {

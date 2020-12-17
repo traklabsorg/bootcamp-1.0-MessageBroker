@@ -1,4 +1,5 @@
 import { request } from "express";
+import { Log } from "../log";
 
 const fs = require("fs");
 var AWS = require("aws-sdk");
@@ -239,18 +240,38 @@ export class SNS_SQS {
   }
 
   public async LogInfo(message: string) {
+
+    let log = new Log();
+    log.setUserMessage(message);
+    log.setIssueTypeId(Issue_Type_ID.Information);
+    log.setIssueCategoryId(Issue_Category.Low);
+    return this.processLogs(log,null,null);
+
+
     //here the log category is information
     //log type is low
     //call the processLogs with the prepared object
   }
 
   public async LogWarning(message: string) {
+    let log = new Log();
+    log.setUserMessage(message);
+    log.setIssueTypeId(Issue_Type_ID.Warning);
+    log.setIssueCategoryId(Issue_Category.Low);
+    return this.processLogs(log,null,null);
+
     //here the log category is warning
     ///call the processLogs with the prepared object
   }
 
   public async LogError(message: string) {
-    //here the log category is Exectpion
+    let log = new Log();
+    log.setUserMessage(message);
+    log.setIssueTypeId(Issue_Type_ID.Exception);
+    log.setIssueCategoryId(Issue_Category.Critical);
+    return this.processLogs(log,"socketId1","requestGuid1");
+
+    //here the log category is Exeception
     //log type is critical
     //call the processLogs with the prepared object
   }
