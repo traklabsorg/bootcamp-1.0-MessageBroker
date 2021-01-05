@@ -1,6 +1,7 @@
 //using config file as per environment
 let environment = process.env.NODE_ENV;
 let configFileName = `config-${environment}`;
+console.log(configFileName);
 if (!environment) {
   console.log("no environment specified using default i.e local environment");
   configFileName = "config-local";
@@ -333,14 +334,14 @@ export class SNS_SQS {
       : message["RequestGUID"]
       ? message["RequestGUID"]
       : "";
-    let assembly_name = request["assembly_name"];
-    let request_model = request["request_model"];
-    let application_id = request["application_id"];
-    let creation_date = request["creation_date"];
-    let created_by = request["created_by"];
-    let modified_date = request["modified_date"];
-    let modified_by = request["modified_by"];
-    let exception_type = request["exception_type"];
+    let assembly_name = message["assembly_name"];
+    let request_model = message["request_model"];
+    let application_id = message["application_id"];
+    let creation_date = message["creation_date"];
+    let created_by = message["created_by"];
+    let modified_date = message["modified_date"];
+    let modified_by = message["modified_by"];
+    let exception_type = message["exception_type"];
 
     let login_name =
       parsedToken && parsedToken.payload ? parsedToken.payload.username : "";
