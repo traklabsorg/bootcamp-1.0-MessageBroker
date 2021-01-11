@@ -1,17 +1,21 @@
 //using config file as per environment
+const path = require("path");
+const fs = require("fs");
+var AWS = require("aws-sdk");
+var jwt = require("jsonwebtoken");
+var os = require("os");
 let environment = process.env.NODE_ENV;
-let configFileName = `config-${environment}`;
+let configFileName = `config-${environment}.json`;
 console.log(configFileName);
 if (!environment) {
   console.log("no environment specified using default i.e local environment");
   configFileName = "config-local";
 }
-const configData = require(`./${configFileName}`);
-const fs = require("fs");
-var AWS = require("aws-sdk");
-const path = require("path");
-var jwt = require("jsonwebtoken");
-var os = require("os");
+const filePath = path.resolve(__dirname, configFileName);
+console.log(filePath);
+var configData = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, configFileName), "utf8")
+);
 
 AWS.config.update({
   accessKeyId: process.env.AWS_ACCESS_KEY,
