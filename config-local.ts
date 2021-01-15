@@ -880,6 +880,40 @@ module.exports = {
       TopicArn: "arn:aws:sns:us-west-2:938510084600:GROUPUSER_DELETE",
     },
     {
+      TopicName: "GROUPUSER_ADDED",
+      Publishers: ["GROUP_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "GROUPUSER_ADDED-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/GROUPUSER_ADDED-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:GROUPUSER_ADDED-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:GROUPUSER_ADDED:9f402208-ba66-410f-9c60-a91cca54a2f0",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "GROUPUSER_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/GROUPUSER_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:GROUPUSER_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:GROUPUSER_ADDED:d8950fe7-535c-4f7a-b2d7-80ddc1e9696d",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:GROUPUSER_ADDED",
+    },
+    {
       TopicName: "CHANNELGROUP_ADD",
       Publishers: ["API_GATEWAY_SERVICE"],
       Method: "POST",

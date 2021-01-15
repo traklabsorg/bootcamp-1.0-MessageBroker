@@ -113,6 +113,8 @@ export class SNS_SQS {
     for (let i = 0; i < topicNames.length; i++) {
       let vTopicName = topicNames[i];
       if (vTopicName === topicName) {
+        console.log("pushing in topic", topicName);
+        console.log("message is -->", message);
         this.publishMessageToTopic(topicName, message);
         return;
       }

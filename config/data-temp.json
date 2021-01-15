@@ -1,1 +1,32 @@
-{}
+{
+  "Topics": [
+    {
+      "TopicName": "GROUPUSER_ADDED",
+      "Publishers": ["GROUP_SERVICE"],
+      "Method": "UNKNOWN",
+      "Subscribers": [
+        {
+          "Service": "GROUP_SERVICE",
+          "Function": "SendUserAddedNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_ADDED"],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "GROUPUSER_ADDED-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/GROUPUSER_ADDED-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:GROUPUSER_ADDED-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:GROUPUSER_ADDED:51ed4484-355b-45ca-a60f-d1be6ff2dc56"
+        },
+        {
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "GROUPUSER_ADDED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/GROUPUSER_ADDED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:GROUPUSER_ADDED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:GROUPUSER_ADDED:606f9bf6-9b85-4ac3-b0e6-3d964f966947"
+        }
+      ],
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:GROUPUSER_ADDED"
+    }
+  ]
+}
