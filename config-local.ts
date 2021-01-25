@@ -1165,23 +1165,92 @@ module.exports = {
       ],
       TopicArn: "arn:aws:sns:us-west-2:938510084600:LESSONDATA_DELETE",
     },
+
+    {
+      TopicName: "LIVECONTENT_ADDED",
+      Publishers: ["MEETING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "MEETING_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LIVECONTENT_ADDED-MEETING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENT_ADDED-MEETING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENT_ADDED-MEETING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_ADDED:4af59513-d91d-4a41-ab07-94c69c330e09",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LIVECONTENT_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENT_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENT_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_ADDED:7a1ba1c4-8667-41cf-b31d-6e9547f5cb0d",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_ADDED",
+    },
+    {
+      TopicName: "LIVECONTENTUSER_ADDED",
+      Publishers: ["MEETING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "MEETING_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LIVECONTENTUSER_ADDED-MEETING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENTUSER_ADDED-MEETING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENTUSER_ADDED-MEETING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_ADDED:34bf4d2c-eec9-4dad-b2b4-a3a2a9d2971d",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LIVECONTENTUSER_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENTUSER_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENTUSER_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_ADDED:45512397-8d9b-45f9-8634-85f72c079f0d",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_ADDED",
+    },
     {
       TopicName: "LIVECONTENT_ADD",
       Publishers: ["API_GATEWAY_SERVICE"],
       Method: "POST",
       Subscribers: [
         {
-          Service: "CHANNEL_SERVICE",
+          Service: "MEETING_SERVICE",
           Function: "AddLiveContent",
           OnSuccessTopicsToPush: ["LIVECONTENT_ADDED"],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "LIVECONTENT_ADD-CHANNEL_SERVICE",
+          QueueName: "LIVECONTENT_ADD-MEETING_SERVICE",
           QueueUrl:
-            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENT_ADD-CHANNEL_SERVICE",
+            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENT_ADD-MEETING_SERVICE",
           QueueArn:
-            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENT_ADD-CHANNEL_SERVICE",
+            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENT_ADD-MEETING_SERVICE",
           SubscriptionArn:
-            "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_ADD:fd71a3e2-2d78-4f36-a5d3-eb9a6117778e",
+            "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_ADD:6ce35034-82eb-4006-91bb-1e1b70868b89",
         },
       ],
       TopicArn: "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_ADD",
@@ -1192,17 +1261,17 @@ module.exports = {
       Method: "PUT",
       Subscribers: [
         {
-          Service: "CHANNEL_SERVICE",
+          Service: "MEETING_SERVICE",
           Function: "UpdateLiveContent",
           OnSuccessTopicsToPush: ["LIVECONTENT_UPDATED"],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "LIVECONTENT_UPDATE-CHANNEL_SERVICE",
+          QueueName: "LIVECONTENT_UPDATE-MEETING_SERVICE",
           QueueUrl:
-            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENT_UPDATE-CHANNEL_SERVICE",
+            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENT_UPDATE-MEETING_SERVICE",
           QueueArn:
-            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENT_UPDATE-CHANNEL_SERVICE",
+            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENT_UPDATE-MEETING_SERVICE",
           SubscriptionArn:
-            "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_UPDATE:3f74428d-5610-4a5c-94ed-cfbff4d3cbef",
+            "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_UPDATE:6cce7dc0-1df0-4058-8e8e-66677c1eb4c4",
         },
       ],
       TopicArn: "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_UPDATE",
@@ -1213,17 +1282,17 @@ module.exports = {
       Method: "DELETE",
       Subscribers: [
         {
-          Service: "CHANNEL_SERVICE",
+          Service: "MEETING_SERVICE",
           Function: "DeleteLiveContent",
           OnSuccessTopicsToPush: ["LIVECONTENT_DELETED"],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "LIVECONTENT_DELETE-CHANNEL_SERVICE",
+          QueueName: "LIVECONTENT_DELETE-MEETING_SERVICE",
           QueueUrl:
-            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENT_DELETE-CHANNEL_SERVICE",
+            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENT_DELETE-MEETING_SERVICE",
           QueueArn:
-            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENT_DELETE-CHANNEL_SERVICE",
+            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENT_DELETE-MEETING_SERVICE",
           SubscriptionArn:
-            "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_DELETE:c29e779c-29b2-4d59-8dd1-38085ddeff17",
+            "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_DELETE:6e5ea30e-8355-4a71-b958-802c66b9dff8",
         },
       ],
       TopicArn: "arn:aws:sns:us-west-2:938510084600:LIVECONTENT_DELETE",
@@ -1234,17 +1303,17 @@ module.exports = {
       Method: "POST",
       Subscribers: [
         {
-          Service: "CHANNEL_SERVICE",
+          Service: "MEETING_SERVICE",
           Function: "AddLiveContentUser",
           OnSuccessTopicsToPush: ["LIVECONTENTUSER_ADDED"],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "LIVECONTENTUSER_ADD-CHANNEL_SERVICE",
+          QueueName: "LIVECONTENTUSER_ADD-MEETING_SERVICE",
           QueueUrl:
-            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENTUSER_ADD-CHANNEL_SERVICE",
+            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENTUSER_ADD-MEETING_SERVICE",
           QueueArn:
-            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENTUSER_ADD-CHANNEL_SERVICE",
+            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENTUSER_ADD-MEETING_SERVICE",
           SubscriptionArn:
-            "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_ADD:31011498-0e07-4f07-b7cc-e83a205054f7",
+            "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_ADD:01eacbeb-f8f2-4040-9314-3f74468f923e",
         },
       ],
       TopicArn: "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_ADD",
@@ -1255,17 +1324,17 @@ module.exports = {
       Method: "PUT",
       Subscribers: [
         {
-          Service: "CHANNEL_SERVICE",
+          Service: "MEETING_SERVICE",
           Function: "UpdateLiveContentUser",
           OnSuccessTopicsToPush: ["LIVECONTENTUSER_UPDATED"],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "LIVECONTENTUSER_UPDATE-CHANNEL_SERVICE",
+          QueueName: "LIVECONTENTUSER_UPDATE-MEETING_SERVICE",
           QueueUrl:
-            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENTUSER_UPDATE-CHANNEL_SERVICE",
+            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENTUSER_UPDATE-MEETING_SERVICE",
           QueueArn:
-            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENTUSER_UPDATE-CHANNEL_SERVICE",
+            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENTUSER_UPDATE-MEETING_SERVICE",
           SubscriptionArn:
-            "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_UPDATE:d835ddfa-a065-4917-a4bb-d73f408e32fe",
+            "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_UPDATE:fdbd70d8-817a-4dfe-9858-39d8cd74b88b",
         },
       ],
       TopicArn: "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_UPDATE",
@@ -1276,21 +1345,22 @@ module.exports = {
       Method: "DELETE",
       Subscribers: [
         {
-          Service: "CHANNEL_SERVICE",
+          Service: "MEETING_SERVICE",
           Function: "DeleteLiveContentUser",
           OnSuccessTopicsToPush: ["LIVECONTENTUSER_DELETED"],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "LIVECONTENTUSER_DELETE-CHANNEL_SERVICE",
+          QueueName: "LIVECONTENTUSER_DELETE-MEETING_SERVICE",
           QueueUrl:
-            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENTUSER_DELETE-CHANNEL_SERVICE",
+            "https://sqs.us-west-2.amazonaws.com/938510084600/LIVECONTENTUSER_DELETE-MEETING_SERVICE",
           QueueArn:
-            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENTUSER_DELETE-CHANNEL_SERVICE",
+            "arn:aws:sqs:us-west-2:938510084600:LIVECONTENTUSER_DELETE-MEETING_SERVICE",
           SubscriptionArn:
-            "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_DELETE:004bbd66-49e8-4bc7-8613-a819ff6b8d79",
+            "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_DELETE:7cbeff2a-6502-4fd9-a7b4-4315a2c66e08",
         },
       ],
       TopicArn: "arn:aws:sns:us-west-2:938510084600:LIVECONTENTUSER_DELETE",
     },
+
     {
       TopicName: "CHANNELBILLPLAN_ADD",
       Publishers: ["API_GATEWAY_SERVICE"],
