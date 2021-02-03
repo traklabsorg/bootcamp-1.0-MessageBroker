@@ -234,6 +234,7 @@ export class SNS_SQS {
   }
 
   public async listenToService(topicName, serviceName, callBack) {
+    console.log(topicName + "-" + serviceName);
     var queueURLMapValue = this.queueURLMap[topicName + "-" + serviceName];
     var queueUrl = queueURLMapValue.QueueUrl;
 
@@ -264,13 +265,13 @@ export class SNS_SQS {
         }
         getMessages();
       } else {
-        setTimeout(getMessages, 10);
+        setTimeout(getMessages, 1000);
       }
     }
 
     function deleteMessageCallback(err, data) {}
 
-    setTimeout(getMessages, 10);
+    setTimeout(getMessages, 1000);
   }
 
   /**
