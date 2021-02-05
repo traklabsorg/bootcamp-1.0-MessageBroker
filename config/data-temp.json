@@ -1,32 +1,116 @@
 {
   "Topics": [
     {
-      "TopicName": "GROUPUSER_ADDED",
-      "Publishers": ["GROUP_SERVICE"],
+      "TopicName": "LIVECONTENT_DELETED",
+      "Publishers": ["MEETING_SERVICE"],
       "Method": "UNKNOWN",
       "Subscribers": [
         {
-          "Service": "GROUP_SERVICE",
-          "Function": "SendUserAddedNotificationToAdmin",
-          "OnSuccessTopicsToPush": ["NOTIFICATION_ADDED"],
+          "Service": "MEETING_SERVICE",
+          "Function": "SendUserDELETEDNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_DELETED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "GROUPUSER_ADDED-GROUP_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/GROUPUSER_ADDED-GROUP_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:GROUPUSER_ADDED-GROUP_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:GROUPUSER_ADDED:51ed4484-355b-45ca-a60f-d1be6ff2dc56"
+          "QueueName": "LIVECONTENT_DELETED-MEETING_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/LIVECONTENT_DELETED-MEETING_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:LIVECONTENT_DELETED-MEETING_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENT_DELETED:a16d44b6-ffac-41fb-bd09-10388217e16c"
         },
         {
           "Service": "API_GATEWAY_SERVICE",
           "Function": "FunctionNameToAcknowledgeUIHandle",
           "OnSuccessTopicsToPush": [],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "GROUPUSER_ADDED-API_GATEWAY_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/GROUPUSER_ADDED-API_GATEWAY_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:GROUPUSER_ADDED-API_GATEWAY_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:GROUPUSER_ADDED:606f9bf6-9b85-4ac3-b0e6-3d964f966947"
+          "QueueName": "LIVECONTENT_DELETED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/LIVECONTENT_DELETED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:LIVECONTENT_DELETED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENT_DELETED:cdb56f65-19ba-4b12-a97c-29050d8e47a2"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:GROUPUSER_ADDED"
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENT_DELETED"
+    },
+    {
+      "TopicName": "LIVECONTENT_UPDATED",
+      "Publishers": ["MEETING_SERVICE"],
+      "Method": "UNKNOWN",
+      "Subscribers": [
+        {
+          "Service": "MEETING_SERVICE",
+          "Function": "SendUserUPDATEDNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_UPDATED"],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "LIVECONTENT_UPDATED-MEETING_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/LIVECONTENT_UPDATED-MEETING_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:LIVECONTENT_UPDATED-MEETING_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENT_UPDATED:a16d44b6-ffac-41fb-bd09-10388217e16c"
+        },
+        {
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "LIVECONTENT_UPDATED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/LIVECONTENT_UPDATED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:LIVECONTENT_UPDATED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENT_UPDATED:cdb56f65-19ba-4b12-a97c-29050d8e47a2"
+        }
+      ],
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENT_UPDATED"
+    },
+    {
+      "TopicName": "LIVECONTENTUSER_DELETED",
+      "Publishers": ["MEETING_SERVICE"],
+      "Method": "UNKNOWN",
+      "Subscribers": [
+        {
+          "Service": "MEETING_SERVICE",
+          "Function": "SendUserDELETEDNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_DELETED"],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "LIVECONTENTUSER_DELETED-MEETING_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/LIVECONTENTUSER_DELETED-MEETING_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:LIVECONTENTUSER_DELETED-MEETING_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENTUSER_DELETED:a16d44b6-ffac-41fb-bd09-10388217e16c"
+        },
+        {
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "LIVECONTENTUSER_DELETED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/LIVECONTENTUSER_DELETED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:LIVECONTENTUSER_DELETED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENTUSER_DELETED:cdb56f65-19ba-4b12-a97c-29050d8e47a2"
+        }
+      ],
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENTUSER_DELETED"
+    },
+    {
+      "TopicName": "LIVECONTENTUSER_UPDATED",
+      "Publishers": ["MEETING_SERVICE"],
+      "Method": "UNKNOWN",
+      "Subscribers": [
+        {
+          "Service": "MEETING_SERVICE",
+          "Function": "SendUserUPDATEDNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_UPDATED"],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "LIVECONTENTUSER_UPDATED-MEETING_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/LIVECONTENTUSER_UPDATED-MEETING_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:LIVECONTENTUSER_UPDATED-MEETING_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENTUSER_UPDATED:a16d44b6-ffac-41fb-bd09-10388217e16c"
+        },
+        {
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "LIVECONTENTUSER_UPDATED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/LIVECONTENTUSER_UPDATED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:LIVECONTENTUSER_UPDATED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENTUSER_UPDATED:cdb56f65-19ba-4b12-a97c-29050d8e47a2"
+        }
+      ],
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:LIVECONTENTUSER_UPDATED"
     }
   ]
 }
