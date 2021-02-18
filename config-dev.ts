@@ -2001,5 +2001,1590 @@ module.exports = {
       ],
       TopicArn: "arn:aws:sns:us-east-2:938510084600:MEETINGPROVIDER_DELETE",
     },
+    {
+      TopicName: "GROUPUSER_DELETED",
+      Publishers: ["GROUP_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "GROUPUSER_DELETED-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/GROUPUSER_DELETED-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:GROUPUSER_DELETED-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:GROUPUSER_DELETED:c646a4eb-39ee-4c09-92b9-67bc9d01e54a",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "GROUPUSER_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/GROUPUSER_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:GROUPUSER_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:GROUPUSER_DELETED:344dd0f9-f814-451f-aff9-d4474940de0a",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:GROUPUSER_DELETED",
+    },
+    {
+      TopicName: "GROUPUSER_UPDATED",
+      Publishers: ["GROUP_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "GROUPUSER_UPDATED-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/GROUPUSER_UPDATED-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:GROUPUSER_UPDATED-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:GROUPUSER_UPDATED:8b7bbaf8-1f2e-4de5-b335-0e865b7c3135",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "GROUPUSER_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/GROUPUSER_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:GROUPUSER_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:GROUPUSER_UPDATED:37560801-4dca-4974-8414-3d7186958c75",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:GROUPUSER_UPDATED",
+    },
+    {
+      TopicName: "PLAN_ADDED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PLAN_ADDED-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PLAN_ADDED-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PLAN_ADDED-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PLAN_ADDED:43f54bf9-2789-4f31-aa2d-eba8359b2f6a",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PLAN_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PLAN_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PLAN_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PLAN_ADDED:a0fa5cfc-9daf-49bc-a3f9-e93055d328b9",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PLAN_ADDED",
+    },
+    {
+      TopicName: "PLAN_DELETED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PLAN_DELETED-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PLAN_DELETED-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PLAN_DELETED-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PLAN_DELETED:4c3c0a1b-9521-45b2-89a7-2fabb7564894",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PLAN_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PLAN_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PLAN_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PLAN_DELETED:a85cb08d-5602-4d7e-92e0-7012d7e49c8b",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PLAN_DELETED",
+    },
+    {
+      TopicName: "PLAN_UPDATED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PLAN_UPDATED-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PLAN_UPDATED-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PLAN_UPDATED-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PLAN_UPDATED:354ea4d6-ea3b-4145-ba59-c533248b867e",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PLAN_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PLAN_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PLAN_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PLAN_UPDATED:d80f3e73-87dd-475a-bff4-89420ab4c0a3",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PLAN_UPDATED",
+    },
+    {
+      TopicName: "COUPON_ADDED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COUPON_ADDED-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COUPON_ADDED-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COUPON_ADDED-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COUPON_ADDED:f7d338d7-186f-4aa7-a605-27b4327bb452",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COUPON_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COUPON_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COUPON_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COUPON_ADDED:23995228-2707-4193-a5e1-53dd9b3a085b",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:COUPON_ADDED",
+    },
+    {
+      TopicName: "COUPON_DELETED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COUPON_DELETED-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COUPON_DELETED-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COUPON_DELETED-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COUPON_DELETED:731209f3-7f5a-4b8d-af4b-29e7a655dbbc",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COUPON_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COUPON_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COUPON_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COUPON_DELETED:39f417ce-8277-4a39-afb1-0582e5649920",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:COUPON_DELETED",
+    },
+    {
+      TopicName: "COUPON_UPDATED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COUPON_UPDATED-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COUPON_UPDATED-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COUPON_UPDATED-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COUPON_UPDATED:da8b1292-255d-47f4-8134-46fc333ff57e",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COUPON_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COUPON_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COUPON_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COUPON_UPDATED:094a96bc-d3d9-401e-a629-d60b364e2c7b",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:COUPON_UPDATED",
+    },
+    {
+      TopicName: "SUBSCRIPTIONORDER_ADDED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SUBSCRIPTIONORDER_ADDED-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SUBSCRIPTIONORDER_ADDED-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SUBSCRIPTIONORDER_ADDED-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SUBSCRIPTIONORDER_ADDED:293e9a05-3832-4643-a2fe-5adbb1ea9737",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SUBSCRIPTIONORDER_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SUBSCRIPTIONORDER_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SUBSCRIPTIONORDER_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SUBSCRIPTIONORDER_ADDED:acdbb66c-b4bc-4bac-a56d-553d7c4d77b2",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SUBSCRIPTIONORDER_ADDED",
+    },
+    {
+      TopicName: "SUBSCRIPTIONORDER_DELETED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SUBSCRIPTIONORDER_DELETED-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SUBSCRIPTIONORDER_DELETED-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SUBSCRIPTIONORDER_DELETED-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SUBSCRIPTIONORDER_DELETED:cd9cab0c-6210-4ea3-af4a-0f40cf34e09f",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SUBSCRIPTIONORDER_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SUBSCRIPTIONORDER_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SUBSCRIPTIONORDER_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SUBSCRIPTIONORDER_DELETED:44450f8a-0d6a-4800-a43d-35df60b3cfe2",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SUBSCRIPTIONORDER_DELETED",
+    },
+    {
+      TopicName: "SUBSCRIPTIONORDER_UPDATED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SUBSCRIPTIONORDER_UPDATED-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SUBSCRIPTIONORDER_UPDATED-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SUBSCRIPTIONORDER_UPDATED-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SUBSCRIPTIONORDER_UPDATED:459842be-fbe7-46c9-8a0f-3f7ceb1abb86",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SUBSCRIPTIONORDER_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SUBSCRIPTIONORDER_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SUBSCRIPTIONORDER_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SUBSCRIPTIONORDER_UPDATED:ac7f9656-6939-4b98-9e3d-2701e9ed3b97",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SUBSCRIPTIONORDER_UPDATED",
+    },
+    {
+      TopicName: "PAYMENTCOUPON_ADDED",
+      Publishers: ["PAYMENT_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "PAYMENT_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENTCOUPON_ADDED-PAYMENT_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENTCOUPON_ADDED-PAYMENT_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENTCOUPON_ADDED-PAYMENT_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENTCOUPON_ADDED:23079059-3fad-4ae4-919b-848d4f7ed897",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENTCOUPON_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENTCOUPON_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENTCOUPON_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENTCOUPON_ADDED:0fecb408-6e7a-490c-96ea-48f922cfcaad",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PAYMENTCOUPON_ADDED",
+    },
+    {
+      TopicName: "PAYMENTCOUPON_DELETED",
+      Publishers: ["PAYMENT_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "PAYMENT_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENTCOUPON_DELETED-PAYMENT_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENTCOUPON_DELETED-PAYMENT_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENTCOUPON_DELETED-PAYMENT_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENTCOUPON_DELETED:6064fd49-666f-4590-adc8-0d1e2d49017b",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENTCOUPON_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENTCOUPON_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENTCOUPON_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENTCOUPON_DELETED:3cb94ec0-9054-467e-a715-960998c922fc",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PAYMENTCOUPON_DELETED",
+    },
+    {
+      TopicName: "PAYMENTCOUPON_UPDATED",
+      Publishers: ["PAYMENT_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "PAYMENT_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENTCOUPON_UPDATED-PAYMENT_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENTCOUPON_UPDATED-PAYMENT_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENTCOUPON_UPDATED-PAYMENT_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENTCOUPON_UPDATED:d794ffd4-b740-4624-851a-4188340a4918",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENTCOUPON_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENTCOUPON_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENTCOUPON_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENTCOUPON_UPDATED:ff67bcd5-3031-4bb2-8017-db758dbc9ea5",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PAYMENTCOUPON_UPDATED",
+    },
+    {
+      TopicName: "PAYMENT_ADDED",
+      Publishers: ["PAYMENT_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "PAYMENT_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENT_ADDED-PAYMENT_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENT_ADDED-PAYMENT_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENT_ADDED-PAYMENT_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENT_ADDED:803db8b0-6bf5-442f-b3db-2de97a803d90",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENT_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENT_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENT_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENT_ADDED:ee1c2826-bbaa-46b4-b637-e8e29bdfc32b",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PAYMENT_ADDED",
+    },
+    {
+      TopicName: "PAYMENT_DELETED",
+      Publishers: ["PAYMENT_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "PAYMENT_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENT_DELETED-PAYMENT_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENT_DELETED-PAYMENT_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENT_DELETED-PAYMENT_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENT_DELETED:8f9b2005-d704-496b-bf7f-96bab0f4f471",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENT_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENT_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENT_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENT_DELETED:12979c3e-8ce1-4fd0-a987-467030b07148",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PAYMENT_DELETED",
+    },
+    {
+      TopicName: "PAYMENT_UPDATED",
+      Publishers: ["PAYMENT_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "PAYMENT_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENT_UPDATED-PAYMENT_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENT_UPDATED-PAYMENT_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENT_UPDATED-PAYMENT_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENT_UPDATED:4ea874c1-ab61-4f60-89c8-bfecaecad2de",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PAYMENT_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PAYMENT_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PAYMENT_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PAYMENT_UPDATED:3e181f3a-9680-4579-98e0-92467797e213",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PAYMENT_UPDATED",
+    },
+
+    {
+      TopicName: "CHANNELGROUP_ADDED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELGROUP_ADDED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_ADDED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_ADDED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_ADDED:74625239-2b55-4c13-9e29-113b8512c62d",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELGROUP_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_ADDED:e6e76d11-5f0e-4362-95ca-441dfee10778",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_ADDED",
+    },
+    {
+      TopicName: "CHANNELGROUP_DELETED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELGROUP_DELETED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_DELETED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_DELETED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_DELETED:fb912d03-6fe6-4e8c-8904-d307aec075a5",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELGROUP_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_DELETED:591e63d3-90a3-4d2b-bda6-37e137647dba",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_DELETED",
+    },
+    {
+      TopicName: "CHANNELGROUP_UPDATED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELGROUP_UPDATED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_UPDATED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_UPDATED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_UPDATED:cc0975e8-7174-407e-9cce-7dd5910d5b78",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELGROUP_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_UPDATED:ba065e51-abc5-4d9e-b5ee-03293dabdcf4",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_UPDATED",
+    },
+    {
+      TopicName: "SECTION_ADDED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTION_ADDED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTION_ADDED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTION_ADDED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTION_ADDED:0304ebfa-73b1-4d11-8314-8b9c086a2f5d",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTION_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTION_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTION_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTION_ADDED:cd7d71ec-44b2-4ffe-b4d0-3e793737d7e3",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SECTION_ADDED",
+    },
+    {
+      TopicName: "SECTION_DELETED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTION_DELETED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTION_DELETED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTION_DELETED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTION_DELETED:98270cfe-6e90-4fbb-b630-23c40cbc4da6",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTION_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTION_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTION_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTION_DELETED:67416a46-6ec7-4d8d-b00a-3205af841a96",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SECTION_DELETED",
+    },
+    {
+      TopicName: "SECTION_UPDATED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTION_UPDATED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTION_UPDATED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTION_UPDATED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTION_UPDATED:cd90e700-4e71-4d44-8d12-14da17d67bc3",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTION_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTION_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTION_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTION_UPDATED:93c46586-e31f-4173-9eea-7c3618921714",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SECTION_UPDATED",
+    },
+    {
+      TopicName: "LESSON_ADDED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSON_ADDED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSON_ADDED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSON_ADDED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSON_ADDED:5034b6ba-11ff-40e9-b093-b76cb69ad09f",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSON_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSON_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSON_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSON_ADDED:7411e9c8-fab6-4711-80e9-299359a3c60d",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSON_ADDED",
+    },
+    {
+      TopicName: "LESSON_DELETED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSON_DELETED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSON_DELETED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSON_DELETED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSON_DELETED:2c7acb73-5ade-4baa-9a29-e3e36a904f7f",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSON_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSON_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSON_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSON_DELETED:3f3c99cd-8569-4608-9f63-1571fb6d565f",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSON_DELETED",
+    },
+    {
+      TopicName: "LESSON_UPDATED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSON_UPDATED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSON_UPDATED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSON_UPDATED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSON_UPDATED:7cd4855d-0912-403d-afef-6c15a3bc0bae",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSON_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSON_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSON_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSON_UPDATED:f574341b-a559-41f9-ba36-2f4cba8c3ff0",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSON_UPDATED",
+    },
+    {
+      TopicName: "LESSONDATA_ADDED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATA_ADDED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATA_ADDED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATA_ADDED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATA_ADDED:9739b42a-fe0d-4584-971b-d648b5ded1a8",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATA_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATA_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATA_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATA_ADDED:76b20ea6-4983-488e-a2be-2871ef2439a5",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATA_ADDED",
+    },
+    {
+      TopicName: "LESSONDATA_DELETED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATA_DELETED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATA_DELETED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATA_DELETED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATA_DELETED:40ee3f39-6653-4b22-891f-f8b65e1d45e2",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATA_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATA_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATA_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATA_DELETED:d9f121d3-0479-497f-a33f-cca76c6bdb5b",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATA_DELETED",
+    },
+    {
+      TopicName: "LESSONDATA_UPDATED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATA_UPDATED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATA_UPDATED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATA_UPDATED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATA_UPDATED:1b0376cd-e35f-4ab6-808c-e5d21f824551",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATA_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATA_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATA_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATA_UPDATED:366ddb70-932c-4a83-a5ec-d731b473b398",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATA_UPDATED",
+    },
+    {
+      TopicName: "CHANNELBILLPLAN_ADDED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELBILLPLAN_ADDED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELBILLPLAN_ADDED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELBILLPLAN_ADDED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELBILLPLAN_ADDED:6fa75773-7e69-424b-9ce4-6cc76eb3cae7",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELBILLPLAN_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELBILLPLAN_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELBILLPLAN_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELBILLPLAN_ADDED:01462de1-07d3-4a64-b1d1-c1766f796582",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELBILLPLAN_ADDED",
+    },
+    {
+      TopicName: "CHANNELBILLPLAN_DELETED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELBILLPLAN_DELETED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELBILLPLAN_DELETED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELBILLPLAN_DELETED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELBILLPLAN_DELETED:1e7f77b2-d987-44f8-927a-bbe4e848d055",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELBILLPLAN_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELBILLPLAN_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELBILLPLAN_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELBILLPLAN_DELETED:ff32f47c-a934-452b-bc98-95e4e0b6982f",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELBILLPLAN_DELETED",
+    },
+    {
+      TopicName: "CHANNELBILLPLAN_UPDATED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELBILLPLAN_UPDATED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELBILLPLAN_UPDATED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELBILLPLAN_UPDATED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELBILLPLAN_UPDATED:3094596a-9f07-42bc-8292-72c4418c352a",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELBILLPLAN_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELBILLPLAN_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELBILLPLAN_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELBILLPLAN_UPDATED:8bdb60b2-013b-4de6-8f81-d18b5fdfd55f",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELBILLPLAN_UPDATED",
+    },
+    {
+      TopicName: "LESSONDATAREVIEW_ADDED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAREVIEW_ADDED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAREVIEW_ADDED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAREVIEW_ADDED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAREVIEW_ADDED:b48c0b99-94ed-4f6c-829f-5dd860a48c5f",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAREVIEW_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAREVIEW_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAREVIEW_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAREVIEW_ADDED:a9e7eae3-7d58-4b72-859c-5cf1f7c276b7",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATAREVIEW_ADDED",
+    },
+    {
+      TopicName: "LESSONDATAREVIEW_DELETED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAREVIEW_DELETED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAREVIEW_DELETED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAREVIEW_DELETED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAREVIEW_DELETED:3a4a7a5d-1389-427c-b4e9-856d06aabfc1",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAREVIEW_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAREVIEW_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAREVIEW_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAREVIEW_DELETED:ceeb3113-25d3-4cf0-b4dd-882fce55dfce",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATAREVIEW_DELETED",
+    },
+    {
+      TopicName: "LESSONDATAREVIEW_UPDATED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAREVIEW_UPDATED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAREVIEW_UPDATED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAREVIEW_UPDATED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAREVIEW_UPDATED:0f2c95d3-e2c1-4aa7-96be-0d9808e15741",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAREVIEW_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAREVIEW_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAREVIEW_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAREVIEW_UPDATED:ffece96b-7a26-4a36-95bd-992e7d8716ce",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATAREVIEW_UPDATED",
+    },
+    {
+      TopicName: "SECTIONREVIEW_ADDED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTIONREVIEW_ADDED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_ADDED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_ADDED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_ADDED:8775f81b-cd39-4dfb-b152-3d08487e0a99",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTIONREVIEW_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_ADDED:a3dbf37b-bb7d-4fb9-8e1d-8ef9363986c8",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_ADDED",
+    },
+    {
+      TopicName: "SECTIONREVIEW_DELETED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTIONREVIEW_DELETED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_DELETED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_DELETED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_DELETED:bf94aeaf-ddf3-4158-9160-59bfd620f48a",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTIONREVIEW_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_DELETED:8ec68d9a-1ced-4ec6-ba37-fe0a16792132",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_DELETED",
+    },
+    {
+      TopicName: "SECTIONREVIEW_UPDATED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTIONREVIEW_UPDATED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_UPDATED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_UPDATED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_UPDATED:c029a573-2c47-4de1-9d25-b1f315710166",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTIONREVIEW_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_UPDATED:f087f616-c502-4aaf-b0f6-67fe16ebed24",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_UPDATED",
+    },
+    {
+      TopicName: "LESSONDATAUSER_ADDED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAUSER_ADDED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_ADDED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_ADDED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_ADDED:11dc1ed4-0a0e-42a5-bdbe-5fa11fe07425",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAUSER_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_ADDED:a4f223c1-1ad3-4782-b931-6bd1aa479215",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_ADDED",
+    },
+    {
+      TopicName: "LESSONDATAUSER_DELETED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAUSER_DELETED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_DELETED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_DELETED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_DELETED:2ca0235e-a3b6-4177-be2c-4e3bbac9dc6d",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAUSER_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_DELETED:698dc1b8-91df-42fe-936a-e645b51ce3ed",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_DELETED",
+    },
+    {
+      TopicName: "LESSONDATAUSER_UPDATED",
+      Publishers: ["CHANNEL_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAUSER_UPDATED-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_UPDATED-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_UPDATED-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_UPDATED:dc11aefa-8fed-4a4a-b773-e6519e267ff1",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAUSER_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_UPDATED:92c196c2-41f3-4d4d-9613-ac7a2d069d1d",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_UPDATED",
+    },
+
+    {
+      TopicName: "SECTIONREVIEW_ADD",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "POST",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "AddChannelBillPlan",
+          OnSuccessTopicsToPush: ["SECTIONREVIEW_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTIONREVIEW_ADD-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_ADD:1f2266d6-4be0-4b31-9926-36554cc9d683",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_ADD",
+    },
+    {
+      TopicName: "SECTIONREVIEW_UPDATE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "PUT",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "UpdateChannelBillPlan",
+          OnSuccessTopicsToPush: ["SECTIONREVIEW_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTIONREVIEW_UPDATE-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_UPDATE-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_UPDATE-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_UPDATE:3eb6bbae-17c6-4989-a52e-33cddb32dd11",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_UPDATE",
+    },
+    {
+      TopicName: "SECTIONREVIEW_DELETE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "DELETE",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "DeleteChannelBillPlan",
+          OnSuccessTopicsToPush: ["SECTIONREVIEW_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "SECTIONREVIEW_DELETE-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_DELETE-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_DELETE-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_DELETE:90840d65-b778-47df-b743-15556e21e676",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_DELETE",
+    },
+    {
+      TopicName: "CHANNELGROUP_ADD",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "POST",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "AddChannelBillPlan",
+          OnSuccessTopicsToPush: ["CHANNELGROUP_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELGROUP_ADD-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_ADD:06228082-dfb6-4d10-a527-134afdb26cfb",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_ADD",
+    },
+    {
+      TopicName: "CHANNELGROUP_UPDATE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "PUT",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "UpdateChannelBillPlan",
+          OnSuccessTopicsToPush: ["CHANNELGROUP_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELGROUP_UPDATE-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_UPDATE-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_UPDATE-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_UPDATE:2338f0cc-e7b5-427c-8810-acfb2bd2fb7f",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_UPDATE",
+    },
+    {
+      TopicName: "CHANNELGROUP_DELETE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "DELETE",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "DeleteChannelBillPlan",
+          OnSuccessTopicsToPush: ["CHANNELGROUP_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "CHANNELGROUP_DELETE-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_DELETE-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_DELETE-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_DELETE:ae0c18c8-9bac-42e4-a9f9-d5dbb58007e1",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_DELETE",
+    },
+    {
+      TopicName: "LESSONDATAUSER_ADD",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "POST",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "AddChannelBillPlan",
+          OnSuccessTopicsToPush: ["LESSONDATAUSER_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAUSER_ADD-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_ADD:a6dfe09b-8189-47b8-ae5b-c3ee0199728c",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_ADD",
+    },
+    {
+      TopicName: "LESSONDATAUSER_UPDATE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "PUT",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "UpdateChannelBillPlan",
+          OnSuccessTopicsToPush: ["LESSONDATAUSER_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAUSER_UPDATE-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_UPDATE-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_UPDATE-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_UPDATE:1a9786c9-43c7-4b51-83ca-8406b2ce34f6",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_UPDATE",
+    },
+    {
+      TopicName: "LESSONDATAUSER_DELETE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "DELETE",
+      Subscribers: [
+        {
+          Service: "CHANNEL_SERVICE",
+          Function: "DeleteChannelBillPlan",
+          OnSuccessTopicsToPush: ["LESSONDATAUSER_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "LESSONDATAUSER_DELETE-CHANNEL_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_DELETE-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_DELETE-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_DELETE:5cf1b9a8-b51d-4827-8b5c-710858a2dc7a",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_DELETE",
+    },
   ],
 };
