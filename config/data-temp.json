@@ -1,166 +1,142 @@
 {
   "Topics": [
     {
-      "TopicName": "SECTIONREVIEW_ADD",
+      "TopicName": "CHANNELUSER_ADD",
       "Publishers": ["API_GATEWAY_SERVICE"],
       "Method": "POST",
       "Subscribers": [
         {
-          "Service": "CHANNEL_SERVICE",
-          "Function": "AddChannelBillPlan",
-          "OnSuccessTopicsToPush": ["SECTIONREVIEW_ADDED"],
+          "Service": "GROUP_SERVICE",
+          "Function": "AddChannelGroup",
+          "OnSuccessTopicsToPush": ["CHANNELUSER_ADDED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "SECTIONREVIEW_ADD-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_ADD-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_ADD-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_ADD:20960b86-bcfe-43ce-b632-2a7966c05fe2"
+          "QueueName": "CHANNELUSER_ADD-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_ADD-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_ADD-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_ADD:65a36909-36d4-4fa6-9581-12f47ec5f478"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_ADD"
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_ADD"
     },
     {
-      "TopicName": "SECTIONREVIEW_UPDATE",
+      "TopicName": "CHANNELUSER_UPDATE",
       "Publishers": ["API_GATEWAY_SERVICE"],
       "Method": "PUT",
       "Subscribers": [
         {
-          "Service": "CHANNEL_SERVICE",
-          "Function": "UpdateChannelBillPlan",
-          "OnSuccessTopicsToPush": ["SECTIONREVIEW_UPDATED"],
+          "Service": "GROUP_SERVICE",
+          "Function": "UpdateChannelGroup",
+          "OnSuccessTopicsToPush": ["CHANNELUSER_UPDATED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "SECTIONREVIEW_UPDATE-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_UPDATE-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_UPDATE-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_UPDATE:0e5000ab-0c48-4bb3-bb13-b0ff19ec3dc5"
+          "QueueName": "CHANNELUSER_UPDATE-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_UPDATE-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_UPDATE-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_UPDATE:6583f911-88d9-4dca-a1ff-85bc903523b0"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_UPDATE"
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_UPDATE"
     },
     {
-      "TopicName": "SECTIONREVIEW_DELETE",
+      "TopicName": "CHANNELUSER_DELETE",
       "Publishers": ["API_GATEWAY_SERVICE"],
       "Method": "DELETE",
       "Subscribers": [
         {
-          "Service": "CHANNEL_SERVICE",
-          "Function": "DeleteChannelBillPlan",
-          "OnSuccessTopicsToPush": ["SECTIONREVIEW_DELETED"],
+          "Service": "GROUP_SERVICE",
+          "Function": "DeleteChannelGroup",
+          "OnSuccessTopicsToPush": ["CHANNELUSER_DELETED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "SECTIONREVIEW_DELETE-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/SECTIONREVIEW_DELETE-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:SECTIONREVIEW_DELETE-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_DELETE:dae2cc9e-5f34-4904-a0a1-c34496522b41"
+          "QueueName": "CHANNELUSER_DELETE-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_DELETE-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_DELETE-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_DELETE:29c4a812-45c0-4227-9311-8a7f459a5ed7"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:SECTIONREVIEW_DELETE"
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_DELETE"
     },
     {
-      "TopicName": "CHANNELGROUP_ADD",
-      "Publishers": ["API_GATEWAY_SERVICE"],
-      "Method": "POST",
+      "TopicName": "CHANNELUSER_ADDED",
+      "Publishers": ["CHANNEL_SERVICE"],
+      "Method": "UNKNOWN",
       "Subscribers": [
         {
           "Service": "CHANNEL_SERVICE",
-          "Function": "AddChannelBillPlan",
-          "OnSuccessTopicsToPush": ["CHANNELGROUP_ADDED"],
+          "Function": "SendUserAddedNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_ADDED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "CHANNELGROUP_ADD-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_ADD-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_ADD-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_ADD:20960b86-bcfe-43ce-b632-2a7966c05fe2"
+          "QueueName": "CHANNELUSER_ADDED-CHANNEL_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_ADDED-CHANNEL_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_ADDED-CHANNEL_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_ADDED:74625239-2b55-4c13-9e29-113b8512c62d"
+        },
+        {
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "CHANNELUSER_ADDED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_ADDED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_ADDED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_ADDED:e6e76d11-5f0e-4362-95ca-441dfee10778"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_ADD"
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_ADDED"
     },
     {
-      "TopicName": "CHANNELGROUP_UPDATE",
-      "Publishers": ["API_GATEWAY_SERVICE"],
-      "Method": "PUT",
+      "TopicName": "CHANNELUSER_DELETED",
+      "Publishers": ["CHANNEL_SERVICE"],
+      "Method": "UNKNOWN",
       "Subscribers": [
         {
           "Service": "CHANNEL_SERVICE",
-          "Function": "UpdateChannelBillPlan",
-          "OnSuccessTopicsToPush": ["CHANNELGROUP_UPDATED"],
+          "Function": "SendUserDELETEDNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_DELETED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "CHANNELGROUP_UPDATE-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_UPDATE-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_UPDATE-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_UPDATE:0e5000ab-0c48-4bb3-bb13-b0ff19ec3dc5"
+          "QueueName": "CHANNELUSER_DELETED-CHANNEL_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_DELETED-CHANNEL_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_DELETED-CHANNEL_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_DELETED:fb912d03-6fe6-4e8c-8904-d307aec075a5"
+        },
+        {
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "CHANNELUSER_DELETED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_DELETED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_DELETED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_DELETED:591e63d3-90a3-4d2b-bda6-37e137647dba"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_UPDATE"
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_DELETED"
     },
     {
-      "TopicName": "CHANNELGROUP_DELETE",
-      "Publishers": ["API_GATEWAY_SERVICE"],
-      "Method": "DELETE",
+      "TopicName": "CHANNELUSER_UPDATED",
+      "Publishers": ["CHANNEL_SERVICE"],
+      "Method": "UNKNOWN",
       "Subscribers": [
         {
           "Service": "CHANNEL_SERVICE",
-          "Function": "DeleteChannelBillPlan",
-          "OnSuccessTopicsToPush": ["CHANNELGROUP_DELETED"],
+          "Function": "SendUserUPDATEDNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_UPDATED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "CHANNELGROUP_DELETE-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_DELETE-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_DELETE-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_DELETE:dae2cc9e-5f34-4904-a0a1-c34496522b41"
-        }
-      ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_DELETE"
-    },
-    {
-      "TopicName": "LESSONDATAUSER_ADD",
-      "Publishers": ["API_GATEWAY_SERVICE"],
-      "Method": "POST",
-      "Subscribers": [
+          "QueueName": "CHANNELUSER_UPDATED-CHANNEL_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_UPDATED-CHANNEL_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_UPDATED-CHANNEL_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_UPDATED:cc0975e8-7174-407e-9cce-7dd5910d5b78"
+        },
         {
-          "Service": "CHANNEL_SERVICE",
-          "Function": "AddChannelBillPlan",
-          "OnSuccessTopicsToPush": ["LESSONDATAUSER_ADDED"],
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "LESSONDATAUSER_ADD-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_ADD-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_ADD-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_ADD:20960b86-bcfe-43ce-b632-2a7966c05fe2"
+          "QueueName": "CHANNELUSER_UPDATED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_UPDATED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_UPDATED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_UPDATED:ba065e51-abc5-4d9e-b5ee-03293dabdcf4"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_ADD"
-    },
-    {
-      "TopicName": "LESSONDATAUSER_UPDATE",
-      "Publishers": ["API_GATEWAY_SERVICE"],
-      "Method": "PUT",
-      "Subscribers": [
-        {
-          "Service": "CHANNEL_SERVICE",
-          "Function": "UpdateChannelBillPlan",
-          "OnSuccessTopicsToPush": ["LESSONDATAUSER_UPDATED"],
-          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "LESSONDATAUSER_UPDATE-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_UPDATE-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_UPDATE-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_UPDATE:0e5000ab-0c48-4bb3-bb13-b0ff19ec3dc5"
-        }
-      ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_UPDATE"
-    },
-    {
-      "TopicName": "LESSONDATAUSER_DELETE",
-      "Publishers": ["API_GATEWAY_SERVICE"],
-      "Method": "DELETE",
-      "Subscribers": [
-        {
-          "Service": "CHANNEL_SERVICE",
-          "Function": "DeleteChannelBillPlan",
-          "OnSuccessTopicsToPush": ["LESSONDATAUSER_DELETED"],
-          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "LESSONDATAUSER_DELETE-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/LESSONDATAUSER_DELETE-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:LESSONDATAUSER_DELETE-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_DELETE:dae2cc9e-5f34-4904-a0a1-c34496522b41"
-        }
-      ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_DELETE"
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_UPDATED"
     }
   ]
 }
