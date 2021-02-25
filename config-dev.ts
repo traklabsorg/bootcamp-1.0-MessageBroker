@@ -913,69 +913,69 @@ module.exports = {
       ],
       TopicArn: "arn:aws:sns:us-east-2:938510084600:GROUPUSER_ADDED",
     },
-    {
-      TopicName: "CHANNELGROUP_ADD",
-      Publishers: ["API_GATEWAY_SERVICE"],
-      Method: "POST",
-      Subscribers: [
-        {
-          Service: "GROUP_SERVICE",
-          Function: "AddChannelGroup",
-          OnSuccessTopicsToPush: ["CHANNELGROUP_ADDED"],
-          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "CHANNELGROUP_ADD-GROUP_SERVICE",
-          QueueUrl:
-            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_ADD-GROUP_SERVICE",
-          QueueArn:
-            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_ADD-GROUP_SERVICE",
-          SubscriptionArn:
-            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_ADD:65a36909-36d4-4fa6-9581-12f47ec5f478",
-        },
-      ],
-      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_ADD",
-    },
-    {
-      TopicName: "CHANNELGROUP_UPDATE",
-      Publishers: ["API_GATEWAY_SERVICE"],
-      Method: "PUT",
-      Subscribers: [
-        {
-          Service: "GROUP_SERVICE",
-          Function: "UpdateChannelGroup",
-          OnSuccessTopicsToPush: ["CHANNELGROUP_UPDATED"],
-          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "CHANNELGROUP_UPDATE-GROUP_SERVICE",
-          QueueUrl:
-            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_UPDATE-GROUP_SERVICE",
-          QueueArn:
-            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_UPDATE-GROUP_SERVICE",
-          SubscriptionArn:
-            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_UPDATE:6583f911-88d9-4dca-a1ff-85bc903523b0",
-        },
-      ],
-      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_UPDATE",
-    },
-    {
-      TopicName: "CHANNELGROUP_DELETE",
-      Publishers: ["API_GATEWAY_SERVICE"],
-      Method: "DELETE",
-      Subscribers: [
-        {
-          Service: "GROUP_SERVICE",
-          Function: "DeleteChannelGroup",
-          OnSuccessTopicsToPush: ["CHANNELGROUP_DELETED"],
-          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "CHANNELGROUP_DELETE-GROUP_SERVICE",
-          QueueUrl:
-            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_DELETE-GROUP_SERVICE",
-          QueueArn:
-            "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_DELETE-GROUP_SERVICE",
-          SubscriptionArn:
-            "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_DELETE:29c4a812-45c0-4227-9311-8a7f459a5ed7",
-        },
-      ],
-      TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_DELETE",
-    },
+    // {
+    //   TopicName: "CHANNELGROUP_ADD",
+    //   Publishers: ["API_GATEWAY_SERVICE"],
+    //   Method: "POST",
+    //   Subscribers: [
+    //     {
+    //       Service: "GROUP_SERVICE",
+    //       Function: "AddChannelGroup",
+    //       OnSuccessTopicsToPush: ["CHANNELGROUP_ADDED"],
+    //       OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+    //       QueueName: "CHANNELGROUP_ADD-GROUP_SERVICE",
+    //       QueueUrl:
+    //         "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_ADD-GROUP_SERVICE",
+    //       QueueArn:
+    //         "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_ADD-GROUP_SERVICE",
+    //       SubscriptionArn:
+    //         "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_ADD:65a36909-36d4-4fa6-9581-12f47ec5f478",
+    //     },
+    //   ],
+    //   TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_ADD",
+    // },
+    // {
+    //   TopicName: "CHANNELGROUP_UPDATE",
+    //   Publishers: ["API_GATEWAY_SERVICE"],
+    //   Method: "PUT",
+    //   Subscribers: [
+    //     {
+    //       Service: "GROUP_SERVICE",
+    //       Function: "UpdateChannelGroup",
+    //       OnSuccessTopicsToPush: ["CHANNELGROUP_UPDATED"],
+    //       OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+    //       QueueName: "CHANNELGROUP_UPDATE-GROUP_SERVICE",
+    //       QueueUrl:
+    //         "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_UPDATE-GROUP_SERVICE",
+    //       QueueArn:
+    //         "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_UPDATE-GROUP_SERVICE",
+    //       SubscriptionArn:
+    //         "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_UPDATE:6583f911-88d9-4dca-a1ff-85bc903523b0",
+    //     },
+    //   ],
+    //   TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_UPDATE",
+    // },
+    // {
+    //   TopicName: "CHANNELGROUP_DELETE",
+    //   Publishers: ["API_GATEWAY_SERVICE"],
+    //   Method: "DELETE",
+    //   Subscribers: [
+    //     {
+    //       Service: "GROUP_SERVICE",
+    //       Function: "DeleteChannelGroup",
+    //       OnSuccessTopicsToPush: ["CHANNELGROUP_DELETED"],
+    //       OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+    //       QueueName: "CHANNELGROUP_DELETE-GROUP_SERVICE",
+    //       QueueUrl:
+    //         "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELGROUP_DELETE-GROUP_SERVICE",
+    //       QueueArn:
+    //         "arn:aws:sqs:us-east-2:938510084600:CHANNELGROUP_DELETE-GROUP_SERVICE",
+    //       SubscriptionArn:
+    //         "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_DELETE:29c4a812-45c0-4227-9311-8a7f459a5ed7",
+    //     },
+    //   ],
+    //   TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELGROUP_DELETE",
+    // },
     {
       TopicName: "SECTION_ADD",
       Publishers: ["API_GATEWAY_SERVICE"],
@@ -2688,17 +2688,17 @@ module.exports = {
       Method: "POST",
       Subscribers: [
         {
-          Service: "GROUP_SERVICE",
+          Service: "CHANNEL_SERVICE",
           Function: "AddChannelGroup",
           OnSuccessTopicsToPush: ["CHANNELUSER_ADDED"],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "CHANNELUSER_ADD-GROUP_SERVICE",
+          QueueName: "CHANNELUSER_ADD-CHANNEL_SERVICE",
           QueueUrl:
-            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_ADD-GROUP_SERVICE",
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_ADD-CHANNEL_SERVICE",
           QueueArn:
-            "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_ADD-GROUP_SERVICE",
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_ADD-CHANNEL_SERVICE",
           SubscriptionArn:
-            "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_ADD:fbf8bda7-a421-4ec5-bb50-a17b2e5b4118",
+            "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_ADD:6d7a5f2a-e766-4813-aeff-c256bbc5fe74",
         },
       ],
       TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_ADD",
@@ -2709,17 +2709,17 @@ module.exports = {
       Method: "PUT",
       Subscribers: [
         {
-          Service: "GROUP_SERVICE",
-          Function: "UpdateChannelGroup",
+          Service: "CHANNEL_SERVICE",
+          Function: "UpdateSection",
           OnSuccessTopicsToPush: ["CHANNELUSER_UPDATED"],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "CHANNELUSER_UPDATE-GROUP_SERVICE",
+          QueueName: "CHANNELUSER_UPDATE-CHANNEL_SERVICE",
           QueueUrl:
-            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_UPDATE-GROUP_SERVICE",
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_UPDATE-CHANNEL_SERVICE",
           QueueArn:
-            "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_UPDATE-GROUP_SERVICE",
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_UPDATE-CHANNEL_SERVICE",
           SubscriptionArn:
-            "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_UPDATE:a8765384-51af-4e53-83d1-17247749432b",
+            "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_UPDATE:51f70845-33a0-406a-9b02-fbf3e4bfa765",
         },
       ],
       TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_UPDATE",
@@ -2730,17 +2730,17 @@ module.exports = {
       Method: "DELETE",
       Subscribers: [
         {
-          Service: "GROUP_SERVICE",
-          Function: "DeleteChannelGroup",
+          Service: "CHANNEL_SERVICE",
+          Function: "DeleteSection",
           OnSuccessTopicsToPush: ["CHANNELUSER_DELETED"],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
-          QueueName: "CHANNELUSER_DELETE-GROUP_SERVICE",
+          QueueName: "CHANNELUSER_DELETE-CHANNEL_SERVICE",
           QueueUrl:
-            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_DELETE-GROUP_SERVICE",
+            "https://sqs.us-east-2.amazonaws.com/938510084600/CHANNELUSER_DELETE-CHANNEL_SERVICE",
           QueueArn:
-            "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_DELETE-GROUP_SERVICE",
+            "arn:aws:sqs:us-east-2:938510084600:CHANNELUSER_DELETE-CHANNEL_SERVICE",
           SubscriptionArn:
-            "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_DELETE:207f8e00-75e1-4ba3-a34f-51d2a6a9871b",
+            "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_DELETE:f24ed391-4dc7-4ecc-ac99-7abef5ac73e4",
         },
       ],
       TopicArn: "arn:aws:sns:us-east-2:938510084600:CHANNELUSER_DELETE",
