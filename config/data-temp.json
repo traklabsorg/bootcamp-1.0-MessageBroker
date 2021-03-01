@@ -1,58 +1,142 @@
 {
   "Topics": [
     {
-      "TopicName": "CHANNELUSER_ADD",
+      "TopicName": "INVITEDMEMBER_ADD",
       "Publishers": ["API_GATEWAY_SERVICE"],
       "Method": "POST",
       "Subscribers": [
         {
-          "Service": "CHANNEL_SERVICE",
-          "Function": "AddChannelGroup",
-          "OnSuccessTopicsToPush": ["CHANNELUSER_ADDED"],
+          "Service": "GROUP_SERVICE",
+          "Function": "AddUser",
+          "OnSuccessTopicsToPush": ["INVITEDMEMBER_ADDED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "CHANNELUSER_ADD-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNELUSER_ADD-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:CHANNELUSER_ADD-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:CHANNELUSER_ADD:9b16cc4a-9c35-45ae-a12f-23caa8e4f93f"
+          "QueueName": "INVITEDMEMBER_ADD-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_ADD-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_ADD-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_ADD:c3b374ef-a92e-4815-8a37-a78d04921932"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-west-2:938510084600:CHANNELUSER_ADD"
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_ADD"
     },
     {
-      "TopicName": "CHANNELUSER_UPDATE",
+      "TopicName": "INVITEDMEMBER_UPDATE",
       "Publishers": ["API_GATEWAY_SERVICE"],
       "Method": "PUT",
       "Subscribers": [
         {
-          "Service": "CHANNEL_SERVICE",
-          "Function": "UpdateSection",
-          "OnSuccessTopicsToPush": ["CHANNELUSER_UPDATED"],
+          "Service": "GROUP_SERVICE",
+          "Function": "UpdateUser",
+          "OnSuccessTopicsToPush": ["INVITEDMEMBER_UPDATED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "CHANNELUSER_UPDATE-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNELUSER_UPDATE-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:CHANNELUSER_UPDATE-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:CHANNELUSER_UPDATE:5c65b809-e00d-4c38-8ca1-bf84503a57d2"
+          "QueueName": "INVITEDMEMBER_UPDATE-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_UPDATE-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_UPDATE-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_UPDATE:ba3b9001-e00c-4045-842b-de0545d33949"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-west-2:938510084600:CHANNELUSER_UPDATE"
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_UPDATE"
     },
     {
-      "TopicName": "CHANNELUSER_DELETE",
+      "TopicName": "INVITEDMEMBER_DELETE",
       "Publishers": ["API_GATEWAY_SERVICE"],
       "Method": "DELETE",
       "Subscribers": [
         {
-          "Service": "CHANNEL_SERVICE",
-          "Function": "DeleteSection",
-          "OnSuccessTopicsToPush": ["CHANNELUSER_DELETED"],
+          "Service": "GROUP_SERVICE",
+          "Function": "DeleteUser",
+          "OnSuccessTopicsToPush": ["INVITEDMEMBER_DELETED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "CHANNELUSER_DELETE-CHANNEL_SERVICE",
-          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNELUSER_DELETE-CHANNEL_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:CHANNELUSER_DELETE-CHANNEL_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:CHANNELUSER_DELETE:0bc05d20-8f5e-4591-b00f-d7c86bbaa641"
+          "QueueName": "INVITEDMEMBER_DELETE-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_DELETE-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_DELETE-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_DELETE:01f4f54b-7e68-4fd9-999e-2baa941a6cc0"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-west-2:938510084600:CHANNELUSER_DELETE"
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_DELETE"
+    },
+    {
+      "TopicName": "INVITEDMEMBER_ADDED",
+      "Publishers": ["GROUP_SERVICE"],
+      "Method": "UNKNOWN",
+      "Subscribers": [
+        {
+          "Service": "GROUP_SERVICE",
+          "Function": "SendUserAddedNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_ADDED"],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "INVITEDMEMBER_ADDED-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_ADDED-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_ADDED-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_ADDED:51ed4484-355b-45ca-a60f-d1be6ff2dc56"
+        },
+        {
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "INVITEDMEMBER_ADDED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_ADDED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_ADDED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_ADDED:606f9bf6-9b85-4ac3-b0e6-3d964f966947"
+        }
+      ],
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_ADDED"
+    },
+    {
+      "TopicName": "INVITEDMEMBER_UPDATED",
+      "Publishers": ["GROUP_SERVICE"],
+      "Method": "UNKNOWN",
+      "Subscribers": [
+        {
+          "Service": "GROUP_SERVICE",
+          "Function": "SendUserUPDATEDNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_UPDATED"],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "INVITEDMEMBER_UPDATED-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_UPDATED-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_UPDATED-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_UPDATED:fd6b120e-5c0b-4367-bf11-958a10878b9d"
+        },
+        {
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "INVITEDMEMBER_UPDATED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_UPDATED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_UPDATED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_UPDATED:7a7a4d16-ddcf-4409-b725-924d4341ffd6"
+        }
+      ],
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_UPDATED"
+    },
+    {
+      "TopicName": "INVITEDMEMBER_DELETED",
+      "Publishers": ["GROUP_SERVICE"],
+      "Method": "UNKNOWN",
+      "Subscribers": [
+        {
+          "Service": "GROUP_SERVICE",
+          "Function": "SendUserDELETEDNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_DELETED"],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "INVITEDMEMBER_DELETED-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_DELETED-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_DELETED-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_DELETED:a16d44b6-ffac-41fb-bd09-10388217e16c"
+        },
+        {
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "INVITEDMEMBER_DELETED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_DELETED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_DELETED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_DELETED:cdb56f65-19ba-4b12-a97c-29050d8e47a2"
+        }
+      ],
+      "TopicArn": "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_DELETED"
     }
   ]
 }

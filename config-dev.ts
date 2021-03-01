@@ -3751,5 +3751,170 @@ module.exports = {
       ],
       TopicArn: "arn:aws:sns:us-east-2:938510084600:LESSONDATAUSER_DELETE",
     },
+    {
+      TopicName: "INVITEDMEMBER_ADD",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "POST",
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "AddUser",
+          OnSuccessTopicsToPush: ["INVITEDMEMBER_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "INVITEDMEMBER_ADD-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_ADD-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_ADD-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_ADD:a57875c6-f109-45f5-b9a7-771c9f5169d6",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_ADD",
+    },
+    {
+      TopicName: "INVITEDMEMBER_UPDATE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "PUT",
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "UpdateUser",
+          OnSuccessTopicsToPush: ["INVITEDMEMBER_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "INVITEDMEMBER_UPDATE-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_UPDATE-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_UPDATE-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_UPDATE:040d7b54-1206-477e-8f7c-c2bad0d31d49",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_UPDATE",
+    },
+    {
+      TopicName: "INVITEDMEMBER_DELETE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "DELETE",
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "DeleteUser",
+          OnSuccessTopicsToPush: ["INVITEDMEMBER_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "INVITEDMEMBER_DELETE-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_DELETE-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_DELETE-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_DELETE:51912f33-ddfb-4f6e-b2bd-02bb98cc4d2d",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_DELETE",
+    },
+    {
+      TopicName: "INVITEDMEMBER_ADDED",
+      Publishers: ["GROUP_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "SendUserAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "INVITEDMEMBER_ADDED-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_ADDED-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_ADDED-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_ADDED:a9580053-a5e4-41a7-9526-07481ce37ecd",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "INVITEDMEMBER_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_ADDED:3e4f0062-8209-4006-8b6a-47dd582da5b6",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_ADDED",
+    },
+    {
+      TopicName: "INVITEDMEMBER_UPDATED",
+      Publishers: ["GROUP_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "SendUserUPDATEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "INVITEDMEMBER_UPDATED-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_UPDATED-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_UPDATED-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_UPDATED:186e959f-0a9c-46a5-95e8-f9852a608706",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "INVITEDMEMBER_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_UPDATED:0c6a355e-352d-417d-8ba4-95e98a0a37cc",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_UPDATED",
+    },
+    {
+      TopicName: "INVITEDMEMBER_DELETED",
+      Publishers: ["GROUP_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "SendUserDELETEDNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "INVITEDMEMBER_DELETED-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_DELETED-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_DELETED-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_DELETED:5d4ce951-7e6f-48e5-8c73-1c65514b4621",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "INVITEDMEMBER_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/INVITEDMEMBER_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:INVITEDMEMBER_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_DELETED:32c1e3f3-55fc-4230-a85b-1c385318368e",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:INVITEDMEMBER_DELETED",
+    },
   ],
 };
