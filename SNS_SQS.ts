@@ -26,6 +26,14 @@ console.log({
   region: process.env.AWS_REGION,
 });
 
+const LISTENER_INTERVAL: number = process.env.LISTENER_INTERVAL
+  ? parseInt(process.env.LISTENER_INTERVAL)
+  : 1000;
+console.log(
+  ">>>>>>>>>>>>>>>>>>LISTENER INTERVAL>>>>>>>>>>>",
+  process.env.LISTENER_INTERVAL
+);
+
 var sns = new AWS.SNS({ apiVersion: "2010-03-31" });
 var sqs = new AWS.SQS({ apiVersion: "2012-11-05" });
 
@@ -265,13 +273,12 @@ export class SNS_SQS {
         }
         getMessages();
       } else {
-        setTimeout(getMessages, 1000);
+        setTimeout(getMessages, LISTENER_INTERVAL);
       }
     }
 
     function deleteMessageCallback(err, data) {}
-
-    setTimeout(getMessages, 1000);
+    setTimeout(getMessages, LISTENER_INTERVAL);
   }
 
   /**
