@@ -3916,5 +3916,131 @@ module.exports = {
       ],
       TopicArn: "arn:aws:sns:us-west-2:938510084600:INVITEDMEMBER_DELETED",
     },
+    {
+      TopicName: "NOTIFICATION_ADD",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "POST",
+      Subscribers: [
+        {
+          Service: "NOTIFICATION_SERVICE",
+          Function: "AddUser",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "NOTIFICATION_ADD-NOTIFICATION_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/NOTIFICATION_ADD-NOTIFICATION_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:NOTIFICATION_ADD-NOTIFICATION_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_ADD:86840769-7fea-4c39-9041-3ae51262a377",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_ADD",
+    },
+    {
+      TopicName: "NOTIFICATION_UPDATE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "PUT",
+      Subscribers: [
+        {
+          Service: "NOTIFICATION_SERVICE",
+          Function: "UpdateUser",
+          OnSuccessTopicsToPush: ["NOTIFICATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "NOTIFICATION_UPDATE-NOTIFICATION_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/NOTIFICATION_UPDATE-NOTIFICATION_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:NOTIFICATION_UPDATE-NOTIFICATION_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_UPDATE:ef35eddb-fcbd-49b5-a32b-25d632d6e93b",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_UPDATE",
+    },
+    {
+      TopicName: "NOTIFICATION_DELETE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "DELETE",
+      Subscribers: [
+        {
+          Service: "NOTIFICATION_SERVICE",
+          Function: "DeleteUser",
+          OnSuccessTopicsToPush: ["NOTIFICATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "NOTIFICATION_DELETE-NOTIFICATION_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/NOTIFICATION_DELETE-NOTIFICATION_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:NOTIFICATION_DELETE-NOTIFICATION_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_DELETE:8a8d952e-d1ed-4464-bbd3-3bfc6709382c",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_DELETE",
+    },
+    {
+      TopicName: "NOTIFICATION_ADDED",
+      Publishers: ["NOTIFICATION_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "NOTIFICATION_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/NOTIFICATION_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:NOTIFICATION_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_ADDED:09e16aa6-cf54-4d84-b6c9-1d51863e5e6e",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_ADDED",
+    },
+    {
+      TopicName: "NOTIFICATION_UPDATED",
+      Publishers: ["NOTIFICATION_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "NOTIFICATION_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/NOTIFICATION_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:NOTIFICATION_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_UPDATED:4fd051dd-5ea9-4f32-9c0f-935a060cfaf4",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_UPDATED",
+    },
+    {
+      TopicName: "NOTIFICATION_DELETED",
+      Publishers: ["NOTIFICATION_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "NOTIFICATION_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/NOTIFICATION_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:NOTIFICATION_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_DELETED:2b27f289-aa51-4bda-a8a7-1d74fa70243f",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:NOTIFICATION_DELETED",
+    },
   ],
 };
