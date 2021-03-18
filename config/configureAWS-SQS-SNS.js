@@ -1,5 +1,5 @@
 var AWS = require("aws-sdk");
-AWS.config.update({ region: "us-west-2" });
+AWS.config.update({ region: "us-east-2" });
 var sns = new AWS.SNS({ apiVersion: "2010-03-31" });
 var sqs = new AWS.SQS({ apiVersion: "2012-11-05" });
 
