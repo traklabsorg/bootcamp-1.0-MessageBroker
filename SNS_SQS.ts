@@ -277,7 +277,7 @@ export class SNS_SQS {
       }
     }
 
-    function deleteMessageCallback(err, data) {}
+    function deleteMessageCallback(err, data) { }
     setTimeout(getMessages, LISTENER_INTERVAL);
   }
 
@@ -337,8 +337,8 @@ export class SNS_SQS {
     let socketId_temp = socketId
       ? socketId
       : message["socket_id"]
-      ? message["socket_id"]
-      : "";
+        ? message["socket_id"]
+        : "";
     let parsedToken = this.parseJwt(message["token"] ? message["token"] : "");
     let stack_trace = message["stack_trace"] ? message["stack_trace"] : "";
     let machine_name = os.hostname();
@@ -349,8 +349,8 @@ export class SNS_SQS {
     let request_guid = requestGUID
       ? requestGUID
       : message["RequestGUID"]
-      ? message["RequestGUID"]
-      : "";
+        ? message["RequestGUID"]
+        : "";
     let assembly_name = message["assembly_name"];
     let request_model = message["request_model"];
     let application_id = message["application_id"];

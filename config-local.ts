@@ -364,7 +364,7 @@ module.exports = {
         {
           Service: "GROUP_SERVICE",
           Function: "AddSubscription",
-          OnSuccessTopicsToPush: ["SUBSCRIPTION_ADDED", "PAYMENT_ADD"],
+          OnSuccessTopicsToPush: ["SUBSCRIPTION_ADDED"],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
           QueueName: "SUBSCRIPTION_ADD-GROUP_SERVICE",
           QueueUrl:
@@ -398,7 +398,7 @@ module.exports = {
         {
           Service: "API_GATEWAY_SERVICE",
           Function: "AcknowledgeToUIForSubscriptionAdded",
-          OnSuccessTopicsToPush: ["SUBSCRIPTION_ADDED", "PAYMENT_ADD"],
+          OnSuccessTopicsToPush: [],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
           QueueName: "SUBSCRIPTION_ADDED-API_GATEWAY_SERVICE",
           QueueUrl:
