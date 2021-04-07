@@ -26,6 +26,14 @@ console.log({
   region: process.env.AWS_REGION,
 });
 
+const LISTENER_INTERVAL: number = process.env.LISTENER_INTERVAL
+  ? parseInt(process.env.LISTENER_INTERVAL)
+  : 1000;
+console.log(
+  ">>>>>>>>>>>>>>>>>>LISTENER INTERVAL>>>>>>>>>>>",
+  process.env.LISTENER_INTERVAL
+);
+
 var sns = new AWS.SNS({ apiVersion: "2010-03-31" });
 var sqs = new AWS.SQS({ apiVersion: "2012-11-05" });
 
@@ -265,13 +273,12 @@ export class SNS_SQS {
         }
         getMessages();
       } else {
-        setTimeout(getMessages, 1000);
+        setTimeout(getMessages, LISTENER_INTERVAL);
       }
     }
 
-    function deleteMessageCallback(err, data) {}
-
-    setTimeout(getMessages, 1000);
+    function deleteMessageCallback(err, data) { }
+    setTimeout(getMessages, LISTENER_INTERVAL);
   }
 
   /**
@@ -330,8 +337,8 @@ export class SNS_SQS {
     let socketId_temp = socketId
       ? socketId
       : message["socket_id"]
-      ? message["socket_id"]
-      : "";
+        ? message["socket_id"]
+        : "";
     let parsedToken = this.parseJwt(message["token"] ? message["token"] : "");
     let stack_trace = message["stack_trace"] ? message["stack_trace"] : "";
     let machine_name = os.hostname();
@@ -342,8 +349,8 @@ export class SNS_SQS {
     let request_guid = requestGUID
       ? requestGUID
       : message["RequestGUID"]
-      ? message["RequestGUID"]
-      : "";
+        ? message["RequestGUID"]
+        : "";
     let assembly_name = message["assembly_name"];
     let request_model = message["request_model"];
     let application_id = message["application_id"];
