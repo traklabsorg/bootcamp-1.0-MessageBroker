@@ -385,7 +385,7 @@ module.exports = {
         {
           Service: "PAYMENT_SERVICE",
           Function: "AddPaymentForGivenSubscription",
-          OnSuccessTopicsToPush: ["PAYMENT_ADD"],
+          OnSuccessTopicsToPush: [],
           OnFailureTopicsToPush: ["ERROR_RECEIVER"],
           QueueName: "SUBSCRIPTION_ADDED-PAYMENT_SERVICE",
           QueueUrl:
