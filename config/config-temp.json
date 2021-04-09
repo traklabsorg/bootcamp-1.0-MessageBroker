@@ -1,112 +1,142 @@
 {
   "Topics": [
     {
-      "TopicName": "NOTIFICATION_ADD",
-      "Publishers": ["API_GATEWAY_SERVICE"],
+      "TopicName": "COMMUNITYCARD_ADD",
       "Method": "POST",
+      "Publishers": ["API_GATEWAY_SERVICE"],
+      "Subscribers": [
+        {
+          "Service": "GROUP_SERVICE",
+          "Function": "InsertGroup",
+          "OnSuccessTopicsToPush": ["COMMUNITYCARD_ADDED"],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "COMMUNITYCARD_ADD-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/COMMUNITYCARD_ADD-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:COMMUNITYCARD_ADD-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_ADD:7f41b011-5aec-4ef5-ad35-94369a3874b9"
+        }
+      ],
+      "TopicArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_ADD"
+    },
+    {
+      "TopicName": "COMMUNITYCARD_UPDATE",
+      "Method": "PUT",
+      "Publishers": ["API_GATEWAY_SERVICE"],
+      "Subscribers": [
+        {
+          "Service": "GROUP_SERVICE",
+          "Function": "UpdateGroup",
+          "OnSuccessTopicsToPush": ["COMMUNITYCARD_UPDATED"],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "COMMUNITYCARD_UPDATE-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/COMMUNITYCARD_UPDATE-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:COMMUNITYCARD_UPDATE-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_UPDATE:ba79c979-8f1a-4ad4-a977-ba88aeae74c3"
+        }
+      ],
+      "TopicArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_UPDATE"
+    },
+    {
+      "TopicName": "COMMUNITYCARD_DELETE",
+      "Method": "DELETE",
+      "Publishers": ["API_GATEWAY_SERVICE"],
+      "Subscribers": [
+        {
+          "Service": "GROUP_SERVICE",
+          "Function": "DeleteGroup",
+          "OnSuccessTopicsToPush": ["COMMUNITYCARD_DELETED"],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "COMMUNITYCARD_DELETE-GROUP_SERVICE",
+          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/COMMUNITYCARD_DELETE-GROUP_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:COMMUNITYCARD_DELETE-GROUP_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_DELETE:18c1329d-7785-4e8f-867d-82621061328b"
+        }
+      ],
+      "TopicArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_DELETE"
+    },
+    {
+      "TopicName": "COMMUNITYCARD_ADDED",
+      "Publishers": ["GROUP_SERVICE"],
+      "Method": "UNKNOWN",
       "Subscribers": [
         {
           "Service": "NOTIFICATION_SERVICE",
-          "Function": "AddUser",
+          "Function": "SendGroupAddedNotificationToAdmin",
           "OnSuccessTopicsToPush": ["NOTIFICATION_ADDED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "NOTIFICATION_ADD-NOTIFICATION_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/NOTIFICATION_ADD-NOTIFICATION_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:NOTIFICATION_ADD-NOTIFICATION_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_ADD:e3c35d39-89d3-4f9e-8cab-768956534d25"
+          "QueueName": "COMMUNITYCARD_ADDED-NOTIFICATION_SERVICE",
+          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/COMMUNITYCARD_ADDED-NOTIFICATION_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:COMMUNITYCARD_ADDED-NOTIFICATION_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_ADDED:cb78672b-8b18-4c72-b4a4-b0d75e045c16"
+        },
+        {
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "COMMUNITYCARD_ADDED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/COMMUNITYCARD_ADDED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:COMMUNITYCARD_ADDED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_ADDED:4d83087f-d09c-43e3-a34d-c338896d7f1d"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_ADD"
+      "TopicArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_ADDED"
     },
     {
-      "TopicName": "NOTIFICATION_UPDATE",
-      "Publishers": ["API_GATEWAY_SERVICE"],
-      "Method": "PUT",
+      "TopicName": "COMMUNITYCARD_UPDATED",
+      "Publishers": ["GROUP_SERVICE"],
+      "Method": "UNKNOWN",
       "Subscribers": [
         {
           "Service": "NOTIFICATION_SERVICE",
-          "Function": "UpdateUser",
-          "OnSuccessTopicsToPush": ["NOTIFICATION_UPDATED"],
+          "Function": "SendGroupUpdatedNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_ADDED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "NOTIFICATION_UPDATE-NOTIFICATION_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/NOTIFICATION_UPDATE-NOTIFICATION_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:NOTIFICATION_UPDATE-NOTIFICATION_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_UPDATE:a9e274ab-ef76-4e2d-a2a5-e2f5236ec682"
+          "QueueName": "COMMUNITYCARD_UPDATED-NOTIFICATION_SERVICE",
+          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/COMMUNITYCARD_UPDATED-NOTIFICATION_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:COMMUNITYCARD_UPDATED-NOTIFICATION_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_UPDATED:01319ebf-974e-4481-b49d-189e0916d6d6"
+        },
+        {
+          "Service": "API_GATEWAY_SERVICE",
+          "Function": "FunctionNameToAcknowledgeUIHandle",
+          "OnSuccessTopicsToPush": [],
+          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
+          "QueueName": "COMMUNITYCARD_UPDATED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/COMMUNITYCARD_UPDATED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:COMMUNITYCARD_UPDATED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_UPDATED:3db5fcbe-fab2-4004-8724-7b3be5bb263e"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_UPDATE"
+      "TopicArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_UPDATED"
     },
     {
-      "TopicName": "NOTIFICATION_DELETE",
-      "Publishers": ["API_GATEWAY_SERVICE"],
-      "Method": "DELETE",
+      "TopicName": "COMMUNITYCARD_DELETED",
+      "Publishers": ["GROUP_SERVICE"],
+      "Method": "UNKNOWN",
       "Subscribers": [
         {
           "Service": "NOTIFICATION_SERVICE",
-          "Function": "DeleteUser",
-          "OnSuccessTopicsToPush": ["NOTIFICATION_DELETED"],
+          "Function": "SendGroupDeletedNotificationToAdmin",
+          "OnSuccessTopicsToPush": ["NOTIFICATION_ADDED"],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "NOTIFICATION_DELETE-NOTIFICATION_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/NOTIFICATION_DELETE-NOTIFICATION_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:NOTIFICATION_DELETE-NOTIFICATION_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_DELETE:a029fd77-b892-4870-a992-b644b61af117"
-        }
-      ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_DELETE"
-    },
-    {
-      "TopicName": "NOTIFICATION_ADDED",
-      "Publishers": ["NOTIFICATION_SERVICE"],
-      "Method": "UNKNOWN",
-      "Subscribers": [
+          "QueueName": "COMMUNITYCARD_DELETED-NOTIFICATION_SERVICE",
+          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/COMMUNITYCARD_DELETED-NOTIFICATION_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:COMMUNITYCARD_DELETED-NOTIFICATION_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_DELETED:cce88e61-bae5-4909-9baf-ba205b5b3afc"
+        },
         {
           "Service": "API_GATEWAY_SERVICE",
           "Function": "FunctionNameToAcknowledgeUIHandle",
           "OnSuccessTopicsToPush": [],
           "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "NOTIFICATION_ADDED-API_GATEWAY_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/NOTIFICATION_ADDED-API_GATEWAY_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:NOTIFICATION_ADDED-API_GATEWAY_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_ADDED:1a8469a1-a89e-4cd0-8167-7ee29d9fd542"
+          "QueueName": "COMMUNITYCARD_DELETED-API_GATEWAY_SERVICE",
+          "QueueUrl": "https://sqs.us-west-2.amazonaws.com/938510084600/COMMUNITYCARD_DELETED-API_GATEWAY_SERVICE",
+          "QueueArn": "arn:aws:sqs:us-west-2:938510084600:COMMUNITYCARD_DELETED-API_GATEWAY_SERVICE",
+          "SubscriptionArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_DELETED:a08c18bf-9019-422f-8c9a-f02563a5f1a7"
         }
       ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_ADDED"
-    },
-    {
-      "TopicName": "NOTIFICATION_UPDATED",
-      "Publishers": ["NOTIFICATION_SERVICE"],
-      "Method": "UNKNOWN",
-      "Subscribers": [
-        {
-          "Service": "API_GATEWAY_SERVICE",
-          "Function": "FunctionNameToAcknowledgeUIHandle",
-          "OnSuccessTopicsToPush": [],
-          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "NOTIFICATION_UPDATED-API_GATEWAY_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/NOTIFICATION_UPDATED-API_GATEWAY_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:NOTIFICATION_UPDATED-API_GATEWAY_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_UPDATED:96dc4669-4750-45c9-8396-01803f8daef4"
-        }
-      ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_UPDATED"
-    },
-    {
-      "TopicName": "NOTIFICATION_DELETED",
-      "Publishers": ["NOTIFICATION_SERVICE"],
-      "Method": "UNKNOWN",
-      "Subscribers": [
-        {
-          "Service": "API_GATEWAY_SERVICE",
-          "Function": "FunctionNameToAcknowledgeUIHandle",
-          "OnSuccessTopicsToPush": [],
-          "OnFailureTopicsToPush": ["ERROR_RECEIVER"],
-          "QueueName": "NOTIFICATION_DELETED-API_GATEWAY_SERVICE",
-          "QueueUrl": "https://sqs.us-east-2.amazonaws.com/938510084600/NOTIFICATION_DELETED-API_GATEWAY_SERVICE",
-          "QueueArn": "arn:aws:sqs:us-east-2:938510084600:NOTIFICATION_DELETED-API_GATEWAY_SERVICE",
-          "SubscriptionArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_DELETED:fa6f980e-7cfa-4caa-9818-77035202c394"
-        }
-      ],
-      "TopicArn": "arn:aws:sns:us-east-2:938510084600:NOTIFICATION_DELETED"
+      "TopicArn": "arn:aws:sns:us-west-2:938510084600:COMMUNITYCARD_DELETED"
     }
   ]
 }
