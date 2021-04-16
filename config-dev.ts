@@ -4207,5 +4207,170 @@ module.exports = {
       ],
       TopicArn: "arn:aws:sns:us-east-2:938510084600:COMMUNITYCARD_DELETED",
     },
+    {
+      TopicName: "COMMUNITYBILL_ADD",
+      Method: "POST",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "InsertGroup",
+          OnSuccessTopicsToPush: ["COMMUNITYBILL_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COMMUNITYBILL_ADD-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COMMUNITYBILL_ADD-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COMMUNITYBILL_ADD-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_ADD:83305a99-a2db-4f2c-a2e2-0be8babbf601",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_ADD",
+    },
+    {
+      TopicName: "COMMUNITYBILL_UPDATE",
+      Method: "PUT",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "UpdateGroup",
+          OnSuccessTopicsToPush: ["COMMUNITYBILL_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COMMUNITYBILL_UPDATE-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COMMUNITYBILL_UPDATE-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COMMUNITYBILL_UPDATE-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_UPDATE:dcf03e60-3445-402c-b888-253305dcadc4",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_UPDATE",
+    },
+    {
+      TopicName: "COMMUNITYBILL_DELETE",
+      Method: "DELETE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Subscribers: [
+        {
+          Service: "BILLING_SERVICE",
+          Function: "DeleteGroup",
+          OnSuccessTopicsToPush: ["COMMUNITYBILL_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COMMUNITYBILL_DELETE-BILLING_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COMMUNITYBILL_DELETE-BILLING_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COMMUNITYBILL_DELETE-BILLING_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_DELETE:942125da-4ee2-4f88-a46b-4e712bd04d35",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_DELETE",
+    },
+    {
+      TopicName: "COMMUNITYBILL_ADDED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "NOTIFICATION_SERVICE",
+          Function: "SendGroupAddedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COMMUNITYBILL_ADDED-NOTIFICATION_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COMMUNITYBILL_ADDED-NOTIFICATION_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COMMUNITYBILL_ADDED-NOTIFICATION_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_ADDED:cd86aee1-5d3a-478d-b2e1-2bfcf77a9f05",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COMMUNITYBILL_ADDED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COMMUNITYBILL_ADDED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COMMUNITYBILL_ADDED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_ADDED:aa5ccc90-8dd7-4572-9e5c-1c16d2b4d53f",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_ADDED",
+    },
+    {
+      TopicName: "COMMUNITYBILL_UPDATED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "NOTIFICATION_SERVICE",
+          Function: "SendGroupUpdatedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COMMUNITYBILL_UPDATED-NOTIFICATION_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COMMUNITYBILL_UPDATED-NOTIFICATION_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COMMUNITYBILL_UPDATED-NOTIFICATION_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_UPDATED:f1f6016f-5804-4a07-9137-df769939eab0",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COMMUNITYBILL_UPDATED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COMMUNITYBILL_UPDATED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COMMUNITYBILL_UPDATED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_UPDATED:3aa9350e-06d0-4acb-b930-d6aeea1dea55",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_UPDATED",
+    },
+    {
+      TopicName: "COMMUNITYBILL_DELETED",
+      Publishers: ["BILLING_SERVICE"],
+      Method: "UNKNOWN",
+      Subscribers: [
+        {
+          Service: "NOTIFICATION_SERVICE",
+          Function: "SendGroupDeletedNotificationToAdmin",
+          OnSuccessTopicsToPush: ["NOTIFICATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COMMUNITYBILL_DELETED-NOTIFICATION_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COMMUNITYBILL_DELETED-NOTIFICATION_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COMMUNITYBILL_DELETED-NOTIFICATION_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_DELETED:f6f8592a-4eeb-46ec-8f2e-a63b7dd18bf8",
+        },
+        {
+          Service: "API_GATEWAY_SERVICE",
+          Function: "FunctionNameToAcknowledgeUIHandle",
+          OnSuccessTopicsToPush: [],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COMMUNITYBILL_DELETED-API_GATEWAY_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/COMMUNITYBILL_DELETED-API_GATEWAY_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:COMMUNITYBILL_DELETED-API_GATEWAY_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_DELETED:c1d2f305-cebc-4cb6-bcac-c67d5ab736fe",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_DELETED",
+    },
   ],
 };

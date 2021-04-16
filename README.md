@@ -19,7 +19,7 @@ sns_sqs.publishMessageToTopic("CHANNEL_ADDED", {
 message: “hello”,
 });
 
-consme message from queue (here CHANNEL_ADDED is topic name, BILLING_SERVICE is a service name and third parameter is callback function which has one parameter (result)):
+consume message from queue (here CHANNEL_ADDED is topic name, BILLING_SERVICE is a service name and third parameter is callback function which has one parameter (result)):
 sns_sqs.listenToService("CHANNEL_ADDED", "BILLING_SERVICE", (result) => {
 let data = result.message;
 console.log(data);
