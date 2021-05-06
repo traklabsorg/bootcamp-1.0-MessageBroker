@@ -4372,5 +4372,68 @@ module.exports = {
       ],
       TopicArn: "arn:aws:sns:us-east-2:938510084600:COMMUNITYBILL_DELETED",
     },
+    {
+      TopicName: "PASSWORDEXPIRY_ADD",
+      Method: "POST",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "InsertGroup",
+          OnSuccessTopicsToPush: ["PASSWORDEXPIRY_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PASSWORDEXPIRY_ADD-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PASSWORDEXPIRY_ADD-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PASSWORDEXPIRY_ADD-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PASSWORDEXPIRY_ADD:92b6b7eb-154f-43d4-9a7c-2596d26d6d3e",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PASSWORDEXPIRY_ADD",
+    },
+    {
+      TopicName: "PASSWORDEXPIRY_UPDATE",
+      Method: "PUT",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "UpdateGroup",
+          OnSuccessTopicsToPush: ["PASSWORDEXPIRY_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PASSWORDEXPIRY_UPDATE-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PASSWORDEXPIRY_UPDATE-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PASSWORDEXPIRY_UPDATE-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PASSWORDEXPIRY_UPDATE:b2fafedd-1e9f-4a66-a4f9-0ad308c9ef1b",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PASSWORDEXPIRY_UPDATE",
+    },
+    {
+      TopicName: "PASSWORDEXPIRY_DELETE",
+      Method: "DELETE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Subscribers: [
+        {
+          Service: "GROUP_SERVICE",
+          Function: "DeleteGroup",
+          OnSuccessTopicsToPush: ["PASSWORDEXPIRY_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "PASSWORDEXPIRY_DELETE-GROUP_SERVICE",
+          QueueUrl:
+            "https://sqs.us-east-2.amazonaws.com/938510084600/PASSWORDEXPIRY_DELETE-GROUP_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-east-2:938510084600:PASSWORDEXPIRY_DELETE-GROUP_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-east-2:938510084600:PASSWORDEXPIRY_DELETE:10d73f50-96c9-4408-b7d7-910cd3f7b1b6",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-east-2:938510084600:PASSWORDEXPIRY_DELETE",
+    },
   ],
 };
