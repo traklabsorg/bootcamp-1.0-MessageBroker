@@ -1,4 +1,5 @@
 //using config file as per environment
+let rabbitMQURL = process.env.RABBIT_MQ_URL;
 let environment = process.env.NODE_ENV;
 let configFileName = `config-${environment}`;
 console.log(configFileName);
@@ -6,64 +7,17 @@ if (!environment) {
   console.log("no environment specified using default i.e local environment");
   configFileName = "config-local";
 }
+var amqp = require("amqplib/callback_api");
 const configData = require(`./${configFileName}`);
-
-const fs = require("fs");
-var AWS = require("aws-sdk");
-const path = require("path");
-var jwt = require("jsonwebtoken");
-var os = require("os");
-
-AWS.config.update({
-  accessKeyId: process.env.AWS_ACCESS_KEY,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION,
-});
-
-console.log({
-  accessKeyId: process.env.AWS_ACCESS_KEY,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  region: process.env.AWS_REGION,
-});
 
 const LISTENER_INTERVAL: number = process.env.LISTENER_INTERVAL
   ? parseInt(process.env.LISTENER_INTERVAL)
   : 1000;
-console.log(
-  ">>>>>>>>>>>>>>>>>>LISTENER INTERVAL>>>>>>>>>>>",
-  process.env.LISTENER_INTERVAL
-);
-
-var sns = new AWS.SNS({ apiVersion: "2010-03-31" });
-var sqs = new AWS.SQS({ apiVersion: "2012-11-05" });
 
 interface QueueURLMapValue {
+  queueName: string[];
   OnSuccessTopicsToPush: string[];
   OnFailureTopicsToPush: string[];
-  QueueUrl: string;
-}
-
-export enum Issue_Category {
-  Critical = 1,
-  Low = 2,
-  None = 3,
-  Normal = 4,
-  High = 5,
-  Debug = 6,
-  Warning = 7,
-}
-
-export enum Issue_Type_ID {
-  SystemError = 1,
-  Warning = 2,
-  Exception = 3,
-  Information = 4,
-  None = 5,
-  General = 6,
-  Config = 7,
-  ServiceError = 8,
-  LogInfo = 9,
-  RunInfo = 10,
 }
 
 export class SNS_SQS {
@@ -71,6 +25,7 @@ export class SNS_SQS {
   private topicARNMap: { [id: string]: string } = {};
   private queueURLMap: { [id: string]: QueueURLMapValue } = {};
   private serviceMethodTopicsMap: { [id: string]: string[] } = {};
+  private channel = null;
 
   private constructor() {
     this.init_AWS_SNS_SQS();
@@ -84,29 +39,32 @@ export class SNS_SQS {
   }
 
   private async init_AWS_SNS_SQS() {
+    console.log("connecting to amq ...", rabbitMQURL);
+    let connection = await amqp.connect(rabbitMQURL);
+    console.log("creating channel ...", rabbitMQURL);
+    this.channel = await connection.createChannel();
     let topics = configData.Topics;
+    console.log(topics.length);
     for (let i = 0; i < topics.length; i++) {
       let topic = topics[i];
       let topicName = topic.TopicName;
-      let topicArn = topic.TopicArn;
+      //create channel
+      await this.channel.assertExchange(topicName, "fanout", {
+        durable: false,
+      });
+
       let subscribers = topic.Subscribers;
-      let method = topic.Method;
-      this.topicARNMap[topicName] = topicArn;
       for (let j = 0; j < subscribers.length; j++) {
         let subscriber = subscribers[j];
         let queueName = subscriber.QueueName;
-        let queueUrl = subscriber.QueueUrl;
-        let serviceName = subscriber.Service;
-        let serviceMethodKey = serviceName + "-" + method;
-        if (method !== "UNKNOWN") {
-          if (serviceMethodKey in this.serviceMethodTopicsMap) {
-            this.serviceMethodTopicsMap[serviceMethodKey].push(topicName);
-          } else {
-            this.serviceMethodTopicsMap[serviceMethodKey] = [topicName];
-          }
-        }
+        console.log("making queue", queueName);
+        let q = await this.channel.assertQueue(queueName, {
+          exclusive: false,
+        });
+        //bind the queue with exchange with queueName
+        this.channel.bindQueue(q.queue, topicName, "");
         let queueURLMapValue = {
-          QueueUrl: queueUrl,
+          queueName: queueName,
           OnSuccessTopicsToPush: subscriber.OnSuccessTopicsToPush,
           OnFailureTopicsToPush: subscriber.OnFailureTopicsToPush,
         };
@@ -121,164 +79,30 @@ export class SNS_SQS {
     methodName: string,
     message: any
   ) {
-    let topicNames = this.serviceMethodTopicsMap[
-      serviceName + "-" + methodName
-    ];
-    for (let i = 0; i < topicNames.length; i++) {
-      let vTopicName = topicNames[i];
-      if (vTopicName === topicName) {
-        console.log("pushing in topic", topicName);
-        console.log("message is -->", message);
-        this.publishMessageToTopic(topicName, message);
-        return;
-      }
-    }
-  }
-
-  private async createTopic(topicName) {
-    var createTopicPromise = sns.createTopic({ Name: topicName }).promise();
-    try {
-      var result = await createTopicPromise;
-      return result.TopicArn;
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  private async createQueue(queueName) {
-    var createQueuePromise = sqs
-      .createQueue({
-        QueueName: queueName,
-      })
-      .promise();
-    try {
-      var result = await createQueuePromise;
-      return result.QueueUrl;
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  private async getQueueArn(queueUrl) {
-    var getQueueAttributesPromise = sqs
-      .getQueueAttributes({
-        QueueUrl: queueUrl,
-        AttributeNames: ["QueueArn"],
-      })
-      .promise();
-    try {
-      var result = await getQueueAttributesPromise;
-      return result.Attributes.QueueArn;
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  private async snsSubscribe(topicArn, queueArn) {
-    var snsSubscribePromise = sns
-      .subscribe({
-        TopicArn: topicArn,
-        Protocol: "sqs",
-        Endpoint: queueArn,
-      })
-      .promise();
-    try {
-      var result = await snsSubscribePromise;
-      return result.SubscriptionArn;
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  private async setQueueAttr(queueUrl, topicArn, queueArn) {
-    var attributes = {
-      Version: "2008-10-17",
-      Id: queueArn + "/SQSDefaultPolicy",
-      Statement: [
-        {
-          Sid: "Sid" + new Date().getTime(),
-          Effect: "Allow",
-          Principal: {
-            AWS: "*",
-          },
-          Action: "SQS:SendMessage",
-          Resource: queueArn,
-          Condition: {
-            ArnEquals: {
-              "aws:SourceArn": topicArn,
-            },
-          },
-        },
-      ],
-    };
-    var setQueueAttributesPromise = sqs
-      .setQueueAttributes({
-        QueueUrl: queueUrl,
-        Attributes: {
-          Policy: JSON.stringify(attributes),
-        },
-      })
-      .promise();
-    try {
-      await setQueueAttributesPromise;
-    } catch (e) {
-      console.log(e);
-    }
+    topicName = topicName + "-" + methodName;
+    this.publishMessageToTopic(topicName, message);
   }
 
   public async publishMessageToTopic(topicName, message) {
-    var topicArn = this.topicARNMap[topicName];
-    var publishParams = {
-      TopicArn: topicArn,
-      Message: JSON.stringify(message),
-    };
-    sns.publish(publishParams, function (err, data) {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(data);
-      }
-    });
+    // publish the message to topic
+    this.channel.publish(topicName, "", Buffer.from(message));
   }
 
   public async listenToService(topicName, serviceName, callBack) {
-    console.log(topicName + "-" + serviceName);
     var queueURLMapValue = this.queueURLMap[topicName + "-" + serviceName];
-    var queueUrl = queueURLMapValue.QueueUrl;
-
-    var receiveMessageParams = {
-      QueueUrl: queueUrl,
-      MaxNumberOfMessages: 10,
-    };
-
-    function getMessages() {
-      sqs.receiveMessage(receiveMessageParams, receiveMessageCallback);
-    }
-
-    function receiveMessageCallback(err, data) {
-      if (data && data.Messages && data.Messages.length > 0) {
-        for (var i = 0; i < data.Messages.length; i++) {
-          //do something with the message here
-          callBack({
-            message: JSON.parse(JSON.parse(data.Messages[i].Body).Message),
-            OnSuccessTopicsToPush: queueURLMapValue.OnSuccessTopicsToPush,
-            OnFailureTopicsToPush: queueURLMapValue.OnSuccessTopicsToPush,
-          });
-          // Delete the message when we've successfully processed it
-          var deleteMessageParams = {
-            QueueUrl: queueUrl,
-            ReceiptHandle: data.Messages[i].ReceiptHandle,
-          };
-          sqs.deleteMessage(deleteMessageParams, deleteMessageCallback);
+    var queueName = queueURLMapValue.queueName;
+    // consume message from queue
+    this.channel.consume(
+      queueName,
+      function (msg) {
+        if (msg.content) {
+          console.log(typeof msg.content);
+          callBack(JSON.parse(msg.content));
+          console.log(" [x] %s", msg.content.toString());
         }
-        getMessages();
-      } else {
-        setTimeout(getMessages, LISTENER_INTERVAL);
-      }
-    }
-
-    function deleteMessageCallback(err, data) { }
-    setTimeout(getMessages, LISTENER_INTERVAL);
+      },
+      { noAck: true }
+    );
   }
 
   /**
@@ -298,130 +122,5 @@ export class SNS_SQS {
         }
       }
     }
-  }
-
-  private parseJwt(token) {
-    try {
-      var decoded = jwt.decode(token, { complete: true });
-      return decoded;
-    } catch (e) {
-      return null;
-    }
-  }
-
-  public async LogInfo(message: string) {
-    //here the log category is information
-    //log type is low
-    //call the processLogs with the prepared object
-  }
-
-  public async LogWarning(message: string) {
-    //here the log category is warning
-    ///call the processLogs with the prepared object
-  }
-
-  public async LogError(message: string) {
-    //here the log category is Exectpion
-    //log type is critical
-    //call the processLogs with the prepared object
-  }
-
-  public async processLogs(
-    message: any,
-    socketId: string,
-    requestGUID: string
-  ) {
-    let issue_category_id: Issue_Category = message["issue_category_id"];
-    let user_message = message["user_message"];
-    let log_parameter_list = JSON.stringify(message["log_parameter_list"]);
-    let socketId_temp = socketId
-      ? socketId
-      : message["socket_id"]
-        ? message["socket_id"]
-        : "";
-    let parsedToken = this.parseJwt(message["token"] ? message["token"] : "");
-    let stack_trace = message["stack_trace"] ? message["stack_trace"] : "";
-    let machine_name = os.hostname();
-    let error_class = message["error_class"];
-    let error_method = message["error_method"];
-    let inner_exception = message["inner_exception"];
-    let tenant_id = message["tenant_id"];
-    let request_guid = requestGUID
-      ? requestGUID
-      : message["RequestGUID"]
-        ? message["RequestGUID"]
-        : "";
-    let assembly_name = message["assembly_name"];
-    let request_model = message["request_model"];
-    let application_id = message["application_id"];
-    let creation_date = message["creation_date"];
-    let created_by = message["created_by"];
-    let modified_date = message["modified_date"];
-    let modified_by = message["modified_by"];
-    let exception_type = message["exception_type"];
-
-    let login_name =
-      parsedToken && parsedToken.payload ? parsedToken.payload.username : "";
-    let issue_type_id: Issue_Type_ID = message["issue_type_id"]
-      ? message["issue_type_id"]
-      : "";
-
-    var params = {
-      DelaySeconds: 0,
-      MessageAttributes: {
-        Title: {
-          DataType: "String",
-          StringValue: "API EXCEPTION LOGS",
-        },
-        Author: {
-          DataType: "String",
-          StringValue: "Smartup Web",
-        },
-        WeeksOn: {
-          DataType: "Number",
-          StringValue: "6",
-        },
-      },
-      MessageBody: JSON.stringify({
-        issue_Category: issue_category_id,
-        issue_type_id: issue_type_id,
-        user_message: user_message,
-        log_parameter_list: log_parameter_list,
-        stack_trace: stack_trace,
-        machine_name: machine_name,
-        login_name: login_name,
-        request_guid: request_guid,
-        error_class: error_class,
-        error_method: error_method,
-        inner_exception: inner_exception,
-        tenant_id: tenant_id,
-        assembly_name: assembly_name,
-        request_model: request_model,
-        application_id: application_id,
-        creation_date: creation_date,
-        created_by: created_by,
-        modified_date: modified_date,
-        modified_by: modified_by,
-        exception_type: exception_type,
-        exception_message: message,
-        socket_id: socketId_temp,
-      }),
-      QueueUrl: process.env.AWS_LOGGER_SQS_URL,
-    };
-
-    sqs.sendMessage(params, function (err: any, data: any) {
-      if (err) {
-        console.log("Error", err);
-      } else {
-        console.log("Success", data.MessageId);
-      }
-    });
-  }
-
-  //todo: make it private
-  private processErrors(message, error) {
-    let requestGUID_temp = message["RequestGUID"] ? message["RequestGUID"] : "";
-    let socketId_temp = message["socketId"] ? message["socketId"] : "";
-    this.processLogs(error, socketId_temp, requestGUID_temp);
   }
 }
