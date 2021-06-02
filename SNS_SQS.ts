@@ -39,37 +39,42 @@ export class SNS_SQS {
   }
 
   private async init_AWS_SNS_SQS() {
-    console.log("connecting to amq ...", rabbitMQURL);
-    let connection = await amqp.connect(rabbitMQURL);
-    console.log("creating channel ...", rabbitMQURL);
-    this.channel = await connection.createChannel();
-    let topics = configData.Topics;
-    console.log(topics.length);
-    for (let i = 0; i < topics.length; i++) {
-      let topic = topics[i];
-      let topicName = topic.TopicName;
-      //create channel
-      await this.channel.assertExchange(topicName, "fanout", {
-        durable: false,
-      });
+    try {
+      console.log("connecting to amq ...", rabbitMQURL);
+      amqp.connect(rabbitMQURL, (err, connection) => {
+        connection.createChannel((err, channel) => {
+          this.channel = channel;
+          let topics = configData.Topics;
+          for (let i = 0; i < topics.length; i++) {
+            let topic = topics[i];
+            let topicName = topic.TopicName;
+            //create channel
+            this.channel.assertExchange(topicName, "fanout", {
+              durable: false,
+            });
 
-      let subscribers = topic.Subscribers;
-      for (let j = 0; j < subscribers.length; j++) {
-        let subscriber = subscribers[j];
-        let queueName = subscriber.QueueName;
-        console.log("making queue", queueName);
-        let q = await this.channel.assertQueue(queueName, {
-          exclusive: false,
+            let subscribers = topic.Subscribers;
+            for (let j = 0; j < subscribers.length; j++) {
+              let subscriber = subscribers[j];
+              let queueName = subscriber.QueueName;
+              let q = this.channel.assertQueue(queueName, {
+                exclusive: false,
+              });
+              //bind the queue with exchange with queueName
+              this.channel.bindQueue(q.queue, topicName, "");
+              let queueURLMapValue = {
+                queueName: queueName,
+                OnSuccessTopicsToPush: subscriber.OnSuccessTopicsToPush,
+                OnFailureTopicsToPush: subscriber.OnFailureTopicsToPush,
+              };
+              this.queueURLMap[queueName] = queueURLMapValue;
+            }
+          }
         });
-        //bind the queue with exchange with queueName
-        this.channel.bindQueue(q.queue, topicName, "");
-        let queueURLMapValue = {
-          queueName: queueName,
-          OnSuccessTopicsToPush: subscriber.OnSuccessTopicsToPush,
-          OnFailureTopicsToPush: subscriber.OnFailureTopicsToPush,
-        };
-        this.queueURLMap[queueName] = queueURLMapValue;
-      }
+
+      });
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -89,20 +94,27 @@ export class SNS_SQS {
   }
 
   public async listenToService(topicName, serviceName, callBack) {
-    var queueURLMapValue = this.queueURLMap[topicName + "-" + serviceName];
-    var queueName = queueURLMapValue.queueName;
-    // consume message from queue
-    this.channel.consume(
-      queueName,
-      function (msg) {
-        if (msg.content) {
-          console.log(typeof msg.content);
-          callBack(JSON.parse(msg.content));
-          console.log(" [x] %s", msg.content.toString());
-        }
-      },
-      { noAck: true }
-    );
+    try {
+
+      var queueURLMapValue = this.queueURLMap[topicName + "-" + serviceName];
+      var queueName = queueURLMapValue.queueName;
+      // consume message from queue
+      this.channel.consume(
+        queueName,
+        function (msg) {
+          if (msg.content) {
+            console.log(typeof msg.content);
+            callBack(JSON.parse(msg.content));
+            console.log(" [x] %s", msg.content.toString());
+          }
+        },
+        { noAck: true }
+      );
+    } catch (e) {
+      setTimeout(() => {
+        this.listenToService(topicName, serviceName, callBack);
+      }, 5000)
+    }
   }
 
   /**
