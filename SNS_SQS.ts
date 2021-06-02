@@ -94,7 +94,6 @@ export class SNS_SQS {
 
   public async listenToService(topicName, serviceName, callBack) {
     try {
-
       var queueURLMapValue = this.queueURLMap[topicName + "-" + serviceName];
       var queueName = queueURLMapValue.queueName;
       // consume message from queue
@@ -102,8 +101,8 @@ export class SNS_SQS {
         queueName,
         function (msg) {
           if (msg.content) {
-            callBack(JSON.parse(msg.content));
-            // console.log(" [x] %s", msg.content.toString());
+            let message = JSON.parse(msg.content);
+            callBack(message);
           }
         },
         { noAck: true }
