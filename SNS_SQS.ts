@@ -103,9 +103,8 @@ export class SNS_SQS {
         queueName,
         function (msg) {
           if (msg.content) {
-            console.log(typeof msg.content);
-            callBack(JSON.parse(msg.content));
-            console.log(" [x] %s", msg.content.toString());
+            let message = JSON.parse(msg.content);
+            callBack(message);
           }
         },
         { noAck: true }
