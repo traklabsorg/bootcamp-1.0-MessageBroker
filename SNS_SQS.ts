@@ -84,13 +84,12 @@ export class SNS_SQS {
     methodName: string,
     message: any
   ) {
-    topicName = topicName + "-" + methodName;
     this.publishMessageToTopic(topicName, message);
   }
 
   public async publishMessageToTopic(topicName, message) {
     // publish the message to topic
-    this.channel.publish(topicName, "", Buffer.from(message));
+    this.channel.publish(topicName, "", Buffer.from(JSON.stringify(message)));
   }
 
   public async listenToService(topicName, serviceName, callBack) {
@@ -103,9 +102,8 @@ export class SNS_SQS {
         queueName,
         function (msg) {
           if (msg.content) {
-            console.log(typeof msg.content);
             callBack(JSON.parse(msg.content));
-            console.log(" [x] %s", msg.content.toString());
+            // console.log(" [x] %s", msg.content.toString());
           }
         },
         { noAck: true }
