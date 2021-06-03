@@ -50,7 +50,7 @@ export class SNS_SQS {
             let topicName = topic.TopicName;
             //create channel
             this.channel.assertExchange(topicName, "fanout", {
-              durable: false,
+              durable: true,
             });
 
             let subscribers = topic.Subscribers;
@@ -102,7 +102,11 @@ export class SNS_SQS {
         function (msg) {
           if (msg.content) {
             let message = JSON.parse(msg.content);
-            callBack(message);
+            callBack({
+              message,
+              OnSuccessTopicsToPush: queueURLMapValue.OnSuccessTopicsToPush,
+              OnFailureTopicsToPush: queueURLMapValue.OnSuccessTopicsToPush
+            });
           }
         },
         { noAck: true }
