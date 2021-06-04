@@ -55,7 +55,7 @@ export class SNS_SQS {
                 exclusive: false,
               });
               //bind the queue with exchange with queueName
-              this.channel.bindQueue(q.queue, topicName, "");
+              this.channel.bindQueue(queueName, topicName, "");
               let queueURLMapValue = {
                 queueName: queueName,
                 OnSuccessTopicsToPush: subscriber.OnSuccessTopicsToPush,
