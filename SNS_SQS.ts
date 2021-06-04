@@ -1,18 +1,8 @@
 //using config file as per environment
 let rabbitMQURL = process.env.RABBIT_MQ_URL;
-let environment = process.env.NODE_ENV;
-let configFileName = `config-${environment}`;
-console.log(configFileName);
-if (!environment) {
-  console.log("no environment specified using default i.e local environment");
-  configFileName = "config-local";
-}
+let configFileName = `rabbit-mq-config`;
 var amqp = require("amqplib/callback_api");
 const configData = require(`./${configFileName}`);
-
-const LISTENER_INTERVAL: number = process.env.LISTENER_INTERVAL
-  ? parseInt(process.env.LISTENER_INTERVAL)
-  : 1000;
 
 interface QueueURLMapValue {
   queueName: string[];
@@ -42,6 +32,10 @@ export class SNS_SQS {
     try {
       console.log("connecting to amq ...", rabbitMQURL);
       amqp.connect(rabbitMQURL, (err, connection) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
         connection.createChannel((err, channel) => {
           this.channel = channel;
           let topics = configData.Topics;
