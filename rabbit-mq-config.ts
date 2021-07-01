@@ -1,6 +1,195 @@
 module.exports = {
   Topics: [
     {
+      TopicName: "REGISTRATION_ADD",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "POST",
+      Subscribers: [
+        {
+          Service: "STUDENTCOURSE_SERVICE",
+          Function: "InsertChannel",
+          OnSuccessTopicsToPush: ["REGISTRATION_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "REGISTRATION_ADD-STUDENTCOURSE_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNEL_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:CHANNEL_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD:93840f93-3401-4798-9a3b-5a2f63c0eb17",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD",
+    },
+    {
+      TopicName: "REGISTRATION_UPDATE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "PUT",
+      Subscribers: [
+        {
+          Service: "STUDENTCOURSE_SERVICE",
+          Function: "InsertChannel",
+          OnSuccessTopicsToPush: ["REGISTRATION_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "REGISTRATION_UPDATE-STUDENTCOURSE_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNEL_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:CHANNEL_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD:93840f93-3401-4798-9a3b-5a2f63c0eb17",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD",
+    },
+    {
+      TopicName: "REGISTRATION_DELETE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "DELETE",
+      Subscribers: [
+        {
+          Service: "STUDENTCOURSE_SERVICE",
+          Function: "InsertChannel",
+          OnSuccessTopicsToPush: ["REGISTRATION_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "REGISTRATION_DELETE-STUDENTCOURSE_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNEL_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:CHANNEL_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD:93840f93-3401-4798-9a3b-5a2f63c0eb17",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD",
+    },
+    {
+      TopicName: "COURSE_ADD",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "POST",
+      Subscribers: [
+        {
+          Service: "STUDENTCOURSE_SERVICE",
+          Function: "InsertChannel",
+          OnSuccessTopicsToPush: ["COURSE_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COURSE_ADD-STUDENTCOURSE_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNEL_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:CHANNEL_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD:93840f93-3401-4798-9a3b-5a2f63c0eb17",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD",
+    },
+    {
+      TopicName: "COURSE_UPDATE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "PUT",
+      Subscribers: [
+        {
+          Service: "STUDENTCOURSE_SERVICE",
+          Function: "InsertChannel",
+          OnSuccessTopicsToPush: ["COURSE_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COURSE_UPDATE-STUDENTCOURSE_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNEL_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:CHANNEL_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD:93840f93-3401-4798-9a3b-5a2f63c0eb17",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD",
+    },
+    {
+      TopicName: "COURSE_DELETE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "DELETE",
+      Subscribers: [
+        {
+          Service: "STUDENTCOURSE_SERVICE",
+          Function: "InsertChannel",
+          OnSuccessTopicsToPush: ["COURSE_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "COURSE_DELETE-STUDENTCOURSE_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNEL_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:CHANNEL_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD:93840f93-3401-4798-9a3b-5a2f63c0eb17",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD",
+    },
+    {
+      TopicName: "STUDENT_ADD",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "POST",
+      Subscribers: [
+        {
+          Service: "STUDENTCOURSE_SERVICE",
+          Function: "InsertChannel",
+          OnSuccessTopicsToPush: ["STUDENT_ADDED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "STUDENT_ADD-STUDENTCOURSE_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNEL_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:CHANNEL_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD:93840f93-3401-4798-9a3b-5a2f63c0eb17",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD",
+    },
+    {
+      TopicName: "STUDENT_UPDATE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "PUT",
+      Subscribers: [
+        {
+          Service: "STUDENTCOURSE_SERVICE",
+          Function: "InsertChannel",
+          OnSuccessTopicsToPush: ["STUDENT_UPDATED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "STUDENT_UPDATE-STUDENTCOURSE_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNEL_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:CHANNEL_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD:93840f93-3401-4798-9a3b-5a2f63c0eb17",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD",
+    },
+    {
+      TopicName: "STUDENT_DELETE",
+      Publishers: ["API_GATEWAY_SERVICE"],
+      Method: "DELETE",
+      Subscribers: [
+        {
+          Service: "STUDENTCOURSE_SERVICE",
+          Function: "InsertChannel",
+          OnSuccessTopicsToPush: ["STUDENT_DELETED"],
+          OnFailureTopicsToPush: ["ERROR_RECEIVER"],
+          QueueName: "STUDENT_DELETE-STUDENTCOURSE_SERVICE",
+          QueueUrl:
+            "https://sqs.us-west-2.amazonaws.com/938510084600/CHANNEL_ADD-CHANNEL_SERVICE",
+          QueueArn:
+            "arn:aws:sqs:us-west-2:938510084600:CHANNEL_ADD-CHANNEL_SERVICE",
+          SubscriptionArn:
+            "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD:93840f93-3401-4798-9a3b-5a2f63c0eb17",
+        },
+      ],
+      TopicArn: "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD",
+    },
+    {
       TopicName: "CHANNEL_ADD",
       Publishers: ["API_GATEWAY_SERVICE"],
       Method: "POST",
@@ -21,6 +210,7 @@ module.exports = {
       ],
       TopicArn: "arn:aws:sns:us-west-2:938510084600:CHANNEL_ADD",
     },
+    
     {
       TopicName: "CHANNEL_UPDATE",
       Method: "PUT",
